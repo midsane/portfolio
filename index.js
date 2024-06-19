@@ -37,22 +37,24 @@ function writeTextSpecial() {
 writeTextSpecial();
 
 const skill = {
-  c: " <h3>C programming language</h3>",
-  html: "<h3>HTML<h3>",
-  css: "<h3>CSS:</h3><h4>Flexbox,Grid Bootstrap.</h4>",
-  javascript: "<h3>Javascript:</h3> <h4>DOM manipulation</h4>",
-  nodejs: "<h3>Node.js:</h3> <h4>NPM, Express.js, Axios.</h4> ",
-  python: "<h3>Python:</h3> <h4>Turtle module, OOPS</h4>",
-  postgresql: "<h3>PostgreSQL:</h3> <h4>CRUD, pg</h4>",
+  c: " <p>C programming language</p>",
+  html: "<p>HTML<h3>",
+  css: "<p>CSS:</p><p>Flexbox,Grid Bootstrap.</p>",
+  javascript: "<p>Javascript:</p> <p>DOM manipulation</p>",
+  nodejs: "<p>Node.js:</p> <p>NPM, Express.js, Axios.</p> ",
+  python: "<p>Python:</p> <p>Turtle module, OOPS</p>",
+  postgresql: "<p>PostgreSQL:</p> <p>CRUD, pg</p>",
+  react: "<p>React JS:</p> <p>useState, useRef, Context API, useEffect and more</p> "
+
 };
 
 window.addEventListener("scroll", () => {
   var skillPart = document.querySelector(".skill-below");
   var scrollPosition = window.innerHeight + window.scrollY;
   var contactMe = document.querySelector(".contact-bar");
-
+  var myProject = document.querySelector(".my-project");
   if (window.scrollY > window.innerHeight / 50) {
-    console.log("nav small");
+   
     document.querySelector(".nav").style.scale = "0.9";
   } else {
     document.querySelector(".nav").style.scale = "1";
@@ -121,6 +123,15 @@ else {
     document.querySelector(".star-3").classList.add("star-3-scroll");
     document.querySelector(".contact-bar").classList.remove("contact-bar-show");
   }
+  if (scrollPosition > myProject.offsetTop) {
+    console.log("here")
+    myProject.classList.add("my-project-show");
+    document.querySelector(".myProject").classList.add("scaleUp");
+
+  } else {
+    document.querySelector(".myProject").classList.remove("scaleUp");
+    myProject.classList.remove("my-project-show");
+  }
  var aboutSection = document.querySelector(".intro");
 
   if (window.innerWidth < 1282){
@@ -166,7 +177,7 @@ skillIconArr.forEach((icon) => {
 
 skillIconArr.forEach((icon) => {
   icon.addEventListener("mouseout", (event) => {
-    console.log(event.target.classList);
+    
     document
       .querySelectorAll("." + event.target.classList[1])[0]
       .classList.toggle("skill-box-hover");
