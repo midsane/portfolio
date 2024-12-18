@@ -46,7 +46,7 @@ nav ul {
   transition: all 0.3s ease;
 }
 .logoimg div:hover {
-  box-shadow: inset 1px 2px 5px rgb(63, 62, 62), -3px -2px 5px #fceeff;
+  box-shadow: inset 1px 2px 2px rgb(63, 62, 62), -3px -2px 5px #fceeff;
   background-color: #faaefa;
 }
 .logo {
@@ -57,7 +57,7 @@ nav ul {
   flex: 1;
   display: flex;
   justify-content: center;
-  box-shadow: 1px 1px 5px rgb(242, 224, 224), -1px -1px 5px rgb(207, 207, 205);
+  box-shadow: 1px 1px 1px rgb(242, 224, 224), -1px -1px 5px rgb(207, 207, 205);
 }
 
 .logoimg {
@@ -70,12 +70,21 @@ nav ul {
   justify-content: center;
 }
 
+.logo{
+  transition: all  ease;
+  transition-duration: 300ms;
+}
+
 .logo-hover {
-  box-shadow:inset 1px 1px 4px rgb(68, 66, 66), inset -4px -1px 4px beige;
+  box-shadow:1px 1px 4px rgb(68, 66, 66), inset -2px -1px 2px beige;
+}
+
+.logo:active{
+  scale: 0.7;
 }
 
 .logo-clicked {
-  box-shadow: inset 2px 1px 4px rgb(58, 58, 58), inset -2px -1px 4px beige;
+  box-shadow: inset 2px 1px 2px rgb(58, 58, 58), inset -2px -1px 2px beige;
 }
 
 nav a {
@@ -133,7 +142,7 @@ nav {
 
 .content:hover {
   scale: 1.05;
-  box-shadow: inset 2px 5px 8px #fc4afd;
+  box-shadow: inset 1px 2px 2px #fc4afd;
   transform: rotate(4deg);
 }
 
@@ -387,7 +396,7 @@ nav {
   margin-right: 250%;
   border-radius: 15px;
   background-color: #f5eaf7;
-  box-shadow: 1px 2px 8px #ff9dff;
+  box-shadow: 1px 1px 3px #ff9dff;
   color: black;
   width: 200px;
   transition: scale 0.2s ease, transform 0.2s ease, font-family 1s ease,
@@ -404,7 +413,7 @@ nav {
   font-size: medium !important;
   padding: 35px;
   background-color: #ed9eff;
-  box-shadow: 3px 3px 13px #fc4afd;
+  box-shadow: 2px 2px 2px #fc4afd;
 }
 
 .skill-list {
@@ -1092,4 +1101,10 @@ footer {
   .intro,.below-aboutme{
     width: 100% !important;
   }
+}
+
+#my-project img{
+  width: 40rem;
+  height: auto;
+
 }

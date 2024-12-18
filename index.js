@@ -37,7 +37,7 @@ function writeTextSpecial() {
 writeTextSpecial();
 
 const skill = {
-  c: " <p>C programming language</p>",
+
   html: "<p>HTML<h3>",
   css: "<p>CSS:</p><p>Flexbox,Grid Bootstrap.</p>",
   javascript: "<p>Javascript:</p> <p>DOM manipulation</p>",
