@@ -124,7 +124,7 @@ else {
     document.querySelector(".contact-bar").classList.remove("contact-bar-show");
   }
   if (scrollPosition > myProject.offsetTop) {
-    console.log("here")
+
     myProject.classList.add("my-project-show");
     document.querySelector(".myProject").classList.add("scaleUp");
 
@@ -144,7 +144,7 @@ else {
 
       }
       if(scrollPosition > 2500){
-        console.log("now");
+       
         document.querySelector(".rocket2").classList.add("rocket2-animation");
       }
       else {

@@ -70,16 +70,16 @@ nav ul {
   justify-content: center;
 }
 
-.logo{
-  transition: all  ease;
+.logo {
+  transition: all ease;
   transition-duration: 300ms;
 }
 
 .logo-hover {
-  box-shadow:1px 1px 4px rgb(68, 66, 66), inset -2px -1px 2px beige;
+  box-shadow: 1px 1px 4px rgb(68, 66, 66), inset -2px -1px 2px beige;
 }
 
-.logo:active{
+.logo:active {
   scale: 0.7;
 }
 
@@ -214,7 +214,6 @@ nav {
   margin: 10px;
 }
 .intro div {
-  
   transition: all 5s ease !important;
   flex: 1;
   padding: 50px;
@@ -374,7 +373,7 @@ nav {
   width: 70%;
 }
 
-.content p{
+.content p {
   margin: 0px !important;
 }
 
@@ -403,8 +402,6 @@ nav {
     font-family 1s ease, margin-right 1s ease, padding 1s ease,
     background-color 1s ease, box-shadow 1s ease;
 }
-
-
 
 .content-animation {
   font-family: "Space Grotesk", sans-serif;
@@ -474,12 +471,11 @@ nav {
   top: 0%;
 }
 
-
 .my-project img {
   width: 70%;
 }
 
-.my-project-show{
+.my-project-show {
   opacity: 1 !important;
 }
 .my-project {
@@ -489,30 +485,33 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 80px;
- 
-
 }
 
-.link1,.link2,.link3,.link4 {
+.link1,
+.link2,
+.link3,
+.link4 {
   color: #ddd;
   scale: 1.1;
   transition: all 200ms ease;
 }
 
-.link1:hover,.link2:hover,.link3:hover,.link4:hover {
+.link1:hover,
+.link2:hover,
+.link3:hover,
+.link4:hover {
   color: yellow;
-  
+
   scale: 1.3;
 }
 
-.link{
+.link {
   display: flex;
   gap: 100px;
   cursor: pointer;
 }
-.link a{
+.link a {
   text-decoration-line: none;
-
 }
 
 .carousel-inner {
@@ -520,15 +519,21 @@ nav {
   flex-direction: column;
   gap: 30px;
   max-width: 600px !important;
+  border-radius: 20px;
 }
-#carousel1, #carousel2{
+#carousel1,
+#carousel2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 20px;
 }
-.carousel-inner span{
-  background-color: red !important;
+  .carousel-inner span {
+  background-color: #fc4afd !important;
+  padding: 5px;
+  border: 1px rgb(66, 63, 63) solid;
+  border-radius: 50%;
 }
 
 .skill-box {
@@ -545,11 +550,31 @@ nav {
   border-color: black;
 }
 
+@keyframes twinkle {
+  0% {
+    filter: drop-shadow(0px 0px 0px #1a191a);
+    transform: rotate(0deg);
+  }
+  50% {
+    filter: drop-shadow(2px 2px 18px #e0d7e0);
+    transform: rotate(5deg);
+  }
+  75% {
+    filter: drop-shadow(2px 2px 18px #e0d7e0);
+    transform: rotate(-5deg);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 0px #1c1a1c);
+    transform: rotate(0deg);
+  }
+}
+
 .star {
   position: fixed;
   width: 100px;
   transition: all 100ms ease;
   z-index: -5;
+  animation: twinkle 1s ease-in-out infinite;
 }
 
 .star-1 {
@@ -571,12 +596,13 @@ nav {
   0% {
     transform: translate(0%, 0%);
     margin: 0px;
+    filter: drop-shadow(0px 0px 0px #e0d7e0);
   }
   30% {
     transform: translate(-50%, 32%);
     transform: rotate(1deg);
     scale: 1;
-    filter: drop-shadow(0px 0px 40px #fc4afd );
+    filter: drop-shadow(2px 2px 18px #e0d7e0);
   }
 
   50% {
@@ -588,6 +614,7 @@ nav {
     transform: rotate(-3deg);
     transform: translate(0%, 0%);
     margin: 0px;
+    filter: drop-shadow(0px 0px 0px #e0d7e0);
   }
 }
 
@@ -595,12 +622,13 @@ nav {
   0% {
     transform: translate(0%, 0%);
     margin: 0px;
+    filter: drop-shadow(0px 0px 0px #e0d7e0);
   }
   30% {
     transform: translate(-10%, -112%);
     transform: rotate(2deg);
     scale: 1;
-    filter: drop-shadow(0 10 40px #fc4afd);
+    filter: drop-shadow(2px 2px 18px #e0d7e0);
   }
 
   50% {
@@ -612,11 +640,13 @@ nav {
     transform: rotate(-1deg);
     transform: translate(0%, 0%);
     margin: 0px;
+    filter: drop-shadow(0px 0px 0px #e0d7e0);
   }
 }
 
 @keyframes star-3-animation {
   0% {
+    filter: drop-shadow(0px 0px 0px #e0d7e0);
     transform: translate(0%, 0%);
     margin: 0px;
   }
@@ -625,7 +655,7 @@ nav {
     transform: translate(-10%, 12%);
     transform: rotate(1deg);
     scale: 1;
-    filter: drop-shadow(0px 0px 140px #fc4afd);
+    filter: drop-shadow(2px 2px 18px #e0d7e0);
   }
 
   50% {
@@ -637,9 +667,9 @@ nav {
     transform: rotate(-1deg);
     transform: translate(0%, 0%);
     margin: 0px;
+    filter: drop-shadow(0px 0px 0px #e0d7e0);
   }
 }
-
 .star-1-scroll {
   animation-name: star-1-animation;
   animation-duration: 1.2s;
@@ -673,11 +703,10 @@ nav {
 
 h3 {
   font-weight: 500;
-  
 }
 
 #my-project {
-  margin:120px 0px;
+  margin: 120px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -760,7 +789,6 @@ footer {
     margin: 0px 100px;
   }
   .intro div {
-   
     padding: 30px;
     font-size: small;
   }
@@ -779,7 +807,6 @@ footer {
     margin-bottom: 100px;
   }
 
-  
   #my-skills {
     margin-bottom: 100px;
   }
@@ -987,16 +1014,13 @@ footer {
   .skill-list img {
     width: 5px !important;
   }
-
 }
 
 @media screen and (max-width: 700px) {
-
   #contact-me {
     margin: 0px;
   }
   nav ul {
-    
     width: 0px;
     height: 0px;
   }
@@ -1007,8 +1031,6 @@ footer {
   .skill-list {
     flex-wrap: wrap;
   }
-
- 
 
   .text {
     display: flex;
@@ -1026,24 +1048,23 @@ footer {
 
   .rocket-animation {
     z-index: 2;
-    opacity: 0;;
+    opacity: 0;
   }
 
-  .contact-bar{
+  .contact-bar {
     padding: 30px !important;
-    border-radius: 14px ;
+    border-radius: 14px;
   }
   .con {
     padding: 15px;
   }
- .con img {
-  width: 30px;
- }
- .con:hover {
-  padding: 15px;
- }
+  .con img {
+    width: 30px;
+  }
+  .con:hover {
+    padding: 15px;
+  }
 
- 
   .star {
     width: 35px;
   }
@@ -1073,7 +1094,13 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
-  .contact-bar{
+  .carousel-inner {
+    max-width: 400px !important;
+  }
+  .carousel-inner img {
+    object-position: 50% 0%;
+  }
+  .contact-bar {
     padding: 10px 4px !important;
     border-radius: 10px;
     gap: 6px;
@@ -1082,29 +1109,26 @@ footer {
   .con {
     padding: 15px;
   }
- .con img {
-  width: 30px;
- }
- .con:hover {
-  padding: 15px;
- }
-
+  .con img {
+    width: 30px;
+  }
+  .con:hover {
+    padding: 15px;
+  }
 }
 
-
-@media screen and (max-width: 424px){
-
-  .contact-bar{
+@media screen and (max-width: 424px) {
+  .contact-bar {
     padding: 8px 4px !important;
     width: 300px;
   }
-  .intro,.below-aboutme{
+  .intro,
+  .below-aboutme {
     width: 100% !important;
   }
 }
 
-#my-project img{
+#my-project img {
   width: 40rem;
   height: auto;
-
 }
