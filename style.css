@@ -1035,11 +1035,11 @@ footer {
 }
 
 @media screen and (max-width: 700px) {
-  .arrow-up{
+  .arrow-up {
     width: 30px !important;
     height: 30px !important;
   }
-  .arrow-up img{
+  .arrow-up img {
     width: 16px !important;
   }
   #contact-me {
@@ -1047,6 +1047,9 @@ footer {
   }
   .nav-mobile {
     display: flex !important;
+  }
+  .top-indicator {
+    top: 32px !important;
   }
   nav ul {
     width: 0px;
@@ -1184,10 +1187,17 @@ footer {
 
 .nav-mobile {
   gap: 10px;
-  width: fit-content;
-  margin: 15px 15px;
-  border-radius: 5px;
-  justify-content: center;
+  width: 100%;
+  padding: 0px 8px;
+  height: 32px;
+  background-color: #e2e2e244;
+  border-bottom: #bf62b9b6 1px solid;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 70;
+  justify-content: start;
   align-items: center;
   display: none;
 }
@@ -1319,7 +1329,6 @@ footer {
   width: 150px;
 }
 
-
 .arrow-up {
   background-color: white;
   border-radius: 50%;
@@ -1345,8 +1354,8 @@ footer {
   height: auto;
 }
 
-.top-indicator{
-  height: 5px;
+.top-indicator {
+  height: 3px;
   background-color: #ed9eff;
   position: fixed;
   z-index: 50;
