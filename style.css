@@ -1109,7 +1109,7 @@ footer {
     max-width: 400px;
   }
   .rocket2-div{
-    width: 300px;
+    width: 250px !important;
   }
   .carousel-inner {
     max-width: 400px !important;
@@ -1133,7 +1133,7 @@ footer {
 
 @media screen and (max-width: 424px) {
   .rocket2-div{
-    width: 200px;
+    width: 150px !important;
   }
   .carousel-inner {
     max-width: 300px !important;
