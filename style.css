@@ -260,7 +260,7 @@ nav {
 }
 
 .rocket2 {
-  width: 400px;
+  width: 500px;
   position: relative;
   top: 100%;
   right: 100%;
@@ -518,7 +518,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  max-width: 600px !important;
+  max-width: 700px !important;
   border-radius: 20px;
 }
 #carousel1,
@@ -534,6 +534,14 @@ nav {
   padding: 5px;
   border: 1px rgb(66, 63, 63) solid;
   border-radius: 50%;
+  transition: all 100ms ease;
+}
+
+.carousel-inner span:hover{
+  scale: 1.1;
+}
+.carousel-inner span:active{
+  scale: 0.9;
 }
 
 .skill-box {
@@ -771,7 +779,7 @@ footer {
 
 @media screen and (max-width: 1597px) {
   .rocket2 {
-    width: 200px;
+    width: 400px;
     z-index: -1;
   }
   .rocket2-animation {
@@ -841,7 +849,7 @@ footer {
   }
 
   .rocket {
-    width: 300px;
+    width: 400px;
   }
   .skill-list {
     gap: 16px;
@@ -851,7 +859,7 @@ footer {
   }
 
   .rocket2 {
-    width: 250px;
+    width: 350px;
   }
   .below-aboutme {
     margin: 0px 180px;
@@ -869,6 +877,7 @@ footer {
   }
 
   .rocket2-div {
+    width: 500px;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -913,9 +922,7 @@ footer {
     width: 70%;
   }
 
-  .rocket {
-    width: 300px;
-  }
+
   .skill-below {
     flex-direction: column;
   }
@@ -960,9 +967,7 @@ footer {
     width: 200px !important;
     height: 180px !important;
   }
-  .rocket {
-    width: 200px;
-  }
+  
 
   footer p {
     padding: 20px;
@@ -970,6 +975,12 @@ footer {
 }
 
 @media screen and(max-width: 792px) {
+  .carousel-inner{
+    max-width: 500px;
+  }
+  .rocket2-div{
+    width: 400px;
+  }
   #home {
     margin-bottom: 100px;
   }
@@ -1043,7 +1054,7 @@ footer {
   }
   .rocket {
     transition-duration: 5s !important;
-    width: 150px;
+    width: 250px;
   }
 
   .rocket-animation {
@@ -1094,11 +1105,14 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
+   .carousel-inner{
+    max-width: 400px;
+  }
+  .rocket2-div{
+    width: 300px;
+  }
   .carousel-inner {
     max-width: 400px !important;
-  }
-  .carousel-inner img {
-    object-position: 50% 0%;
   }
   .contact-bar {
     padding: 10px 4px !important;
@@ -1118,9 +1132,23 @@ footer {
 }
 
 @media screen and (max-width: 424px) {
+  .rocket2-div{
+    width: 200px;
+  }
+  .carousel-inner {
+    max-width: 300px !important;
+  }
+   .con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .contact-bar img{
+    width: 23px;
+   }
   .contact-bar {
-    padding: 8px 4px !important;
-    width: 300px;
+    padding: 8px 5px !important;
+    width: 310px;
   }
   .intro,
   .below-aboutme {
@@ -1132,3 +1160,10 @@ footer {
   width: 40rem;
   height: auto;
 }
+
+
+ .carousel-inner img {
+    width: 100% !important;
+    height: auto !important;
+    object-position: 50% 0% !important;
+  }
