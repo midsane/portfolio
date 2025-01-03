@@ -1036,11 +1036,11 @@ footer {
 
 @media screen and (max-width: 700px) {
   .arrow-up{
-    width: 24px !important;
-    height: 24px !important;
+    width: 30px !important;
+    height: 30px !important;
   }
   .arrow-up img{
-    width: 14px !important;
+    width: 16px !important;
   }
   #contact-me {
     margin: 0px;
