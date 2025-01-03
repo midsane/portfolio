@@ -590,12 +590,12 @@ nav {
   position: fixed;
   width: 100px;
   transition: all 100ms ease;
-  z-index: -5;
+  z-index: -10 !important;
   animation: twinkle 1s ease-in-out infinite;
 }
 
 .star-1 {
-  top: 15%;
+  top: 10%;
   left: 10%;
 }
 
@@ -605,7 +605,7 @@ nav {
 }
 
 .star-3 {
-  top: 10%;
+  top: 7%;
   left: 80%;
 }
 
@@ -1056,6 +1056,10 @@ footer {
     height: 0px;
   }
 
+  .text {
+    transform: translateY(40px) !important;
+  }
+
   nav ul a {
     pointer-events: none;
   }
@@ -1184,12 +1188,15 @@ footer {
   height: auto !important;
   object-position: 50% 0% !important;
 }
+.text {
+  transform: translateY(0px);
+}
 @keyframes navDown {
   0% {
     opacity: 0;
     transform: translateY(-10px);
   }
-  50%{
+  50% {
     opacity: 0;
     transform: translateY(-10px);
   }
