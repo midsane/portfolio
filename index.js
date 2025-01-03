@@ -46,7 +46,7 @@ window.addEventListener("scroll", () => {
 
   nav.style.scale = window.scrollY > window.innerHeight / 50 ? "0.9" : "1";
 
-  if (window.innerWidth > 663) {
+  if (2) {
     const toggleSkillAnimations = (add) => {
       [".star-1", ".star-2", ".star-3"].forEach(cls => document.querySelector(cls).classList.toggle(`${cls.substring(1)}-scroll`, add));
       document.querySelector(".rocket").classList.toggle("rocket-animation", add);
@@ -142,3 +142,15 @@ function updateLiveTime() {
   setTimeout(updateLiveTime, 1000);
 }
 updateLiveTime();
+
+
+
+const topIndicator = document.querySelector(".top-indicator");
+topIndicator.style.transition = "width 0.25s ease-out";
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  topIndicator.style.width = `${scrollPercent}vw`;
+});

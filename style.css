@@ -1344,3 +1344,12 @@ footer {
   width: 18px;
   height: auto;
 }
+
+.top-indicator{
+  height: 5px;
+  background-color: #ed9eff;
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+}
