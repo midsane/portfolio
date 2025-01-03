@@ -1184,8 +1184,23 @@ footer {
   height: auto !important;
   object-position: 50% 0% !important;
 }
+@keyframes navDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  50%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
 
 .nav-mobile {
+  animation: navDown 2s ease-in-out;
   gap: 10px;
   width: 100%;
   padding: 0px 12px;
