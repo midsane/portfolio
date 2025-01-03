@@ -1127,7 +1127,7 @@ footer {
   }
   .rocket2-div,
   .rocket2 {
-    width: 200px !important;
+    width: 250px !important;
   }
   .carousel-inner {
     max-width: 400px !important;
@@ -1316,6 +1316,7 @@ footer {
   display: flex;
   justify-self: center;
   align-items: center;
+  width: 150px;
 }
 
 
