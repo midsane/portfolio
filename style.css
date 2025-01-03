@@ -1188,10 +1188,10 @@ footer {
 .nav-mobile {
   gap: 10px;
   width: 100%;
-  padding: 0px 8px;
-  height: 32px;
+  padding: 0px 12px;
+  height: 39px;
   background-color: #e2e2e244;
-  border-bottom: #bf62b9b6 1px solid;
+  border-bottom: #d26bcb74 1px solid;
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0px;
