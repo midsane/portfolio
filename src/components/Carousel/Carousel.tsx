@@ -31,7 +31,7 @@ export function Carousel({ images, className = "" }: CarouselProps) {
   return (
     <div className={`relative w-full max-w-4xl mx-auto ${className}`}>
       {/* Main image container */}
-      <div className="relative  sm:h-36 sm:w-64 h-24 w-44  border border-stone-800  overflow-hidden rounded-lg bg-transparent/20">
+      <div className="relative max-[450px]:w-32 max-[450px]:h-20 md:h-36 md:w-64 h-24 w-44  border border-stone-800  overflow-hidden rounded-lg bg-transparent/20">
         <img
           src={images[currentIndex] || "/placeholder.svg"}
           alt={`Slide ${currentIndex + 1}`}

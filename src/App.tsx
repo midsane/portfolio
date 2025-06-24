@@ -45,7 +45,7 @@ export default function App() {
 
 
 
-  return <main className="overflow-hidden w-screen bg-black">
+  return <main className="overflow-hidden overflow-x-hidden w-screen bg-black">
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -60,13 +60,13 @@ export default function App() {
     </motion.div>
     <LandingPage />
     <Section id="about-me" title="About Me!">
-      <div className="flex-col sm:flex-row  flex  justify-center items-center gap-10">
+      <div className="flex-col flex  justify-center px-6 md:px-20 items-center gap-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.5 }}
-          className="p-1 border-white/30 rounded w-1/6 h-fit "
+          className="p-1 border-white/30 rounded max-[330px]:w-1/4 sm:w-1/6 w-1/3 h-fit "
         >
           <img src="/rin.jpeg" />
 
@@ -81,7 +81,7 @@ export default function App() {
     </Section>
 
     <Section id="my-projects" upperpad dark title="My Projects!">
-      <div className="border max-[450px]:pt-44 border-stone-900 w-full  overflow-y-scroll sm:overflow-y-hidden sm:overflow-x-scroll justify-center items-center rounded p-10 flex sm:flex-row flex-col gap-10" >
+      <div className="border max-[450px]:5px border-stone-900 w-full md:justify-center md:overflow-x-scroll  overflow-hidden  rounded p-4 md:p-10 flex md:flex-row flex-col gap-10" >
         {projectsData.map((data, ind) => <Project {...data} key={ind} />)}
       </div>
     </Section>
@@ -124,12 +124,12 @@ export default function App() {
 
 const Project = ({ name, description, imgLinks, githubLink, liveLink }:
   ({ name: string, description: string, imgLinks: string[], githubLink: string, liveLink: string })) => {
-  return <div className="flex max-[450px]:flex-col sm:flex-col gap-6 sm:gap-10" >
+  return <div className="flex  md:flex-col gap-6 max-[450px]:gap-3 md:gap-10" >
     <Carousel images={imgLinks} />
-    <div className="flex flex-col gap-3 justify-center items-start w-full">
+    <div className="flex flex-col gap-2 justify-center items-start w-full">
       <span className="flex justify-between items-center w-full" >
-        <h3 className="text-xl sm:text-2xl ">{name}</h3>
-        <div className="flex w-fit gap-2" >
+        <h3 className="max-[450px]:text-sm text-xl md:text-2xl ">{name}</h3>
+        <div className="flex w-fit gap-1" >
           <a target="_blank" href={githubLink}>
             <GithubIcon color="white" size={15} />
           </a>
@@ -139,7 +139,7 @@ const Project = ({ name, description, imgLinks, githubLink, liveLink }:
 
         </div>
       </span>
-      <p className="sm:text-lg opacity-75" >{description}</p>
+      <p className="max-[450px]:text-xs  md:text-lg opacity-75" >{description}</p>
     </div>
   </div>
 }

@@ -12,7 +12,7 @@ export const Section = ({ id, upperpad = false, dark = false, noTitle = false, t
         whileInView={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
         viewport={{ once: true, root: scrollRef }}
         transition={{ duration: 1.2 }}
-        className={`${dark ? "text-white bg-black" : "text-black bg-white"} ${upperpad && "pt-20"} border-t sm:px-10 px-4  md:px-20 flex gap-10 justify-center flex-col  items-center border-stone-900 h-screen w-full `} >
+        className={`${dark ? "text-white bg-black" : "text-black bg-white"} ${upperpad && "pt-20"} border-t sm:px-8 px-4  md:px-10 flex gap-10 justify-center flex-col  items-center border-stone-900 h-screen w-full `} >
         {!noTitle && title && <motion.span
             onViewportEnter={() => setStartAnimation(true)}
         >
