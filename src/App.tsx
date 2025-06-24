@@ -45,7 +45,10 @@ export default function App() {
 
         </motion.div>
 
-        <p className="text-2xl text-black" >Pre-final year full-stack dev building clean, scalable web apps with React, Node, and Prisma. Currently working on TubeSpace, a YouTuber One Click Upload Automation. Exploring GenAI, blockchain, and real-world tech like Docker, gRPC & Kubernetes. Let’s make web dev cool again.
+        <p className="text-2xl text-black" >Pre-final year full-stack dev building clean, scalable 
+          web apps with React, Node, and Prisma. Currently working on TubeSpace, a 
+          YouTuber One Click Upload Automation. Exploring GenAI, blockchain, and real-world 
+          tech like Docker, gRPC & Kubernetes. <span className="text-emerald-500" >Let’s make web dev cool again.</span>
         </p>
       </div>
     </Section>
@@ -85,6 +88,8 @@ export default function App() {
         <a target="_blank" href="https://github.com/midsane"><Github fill="white" className="cursor-pointer hover:scale-110 duration-100 ease-in" color="white" /></a>
         <a target="_blank" href="https://www.linkedin.com/in/aditya-raj-846018294/"><Linkedin fill="white" className="cursor-pointer hover:scale-110 duration-100 ease-in" color="white" /></a>
       </motion.div>
+
+      <p className="text-sm fixed  left-2 bottom-2 text-gray-400">© Midsane</p>
     </Section>
   </main>
 }
@@ -99,10 +104,10 @@ const Project = ({ name, description,  imgLinks, githubLink, liveLink }:
         <h3 className="text-xl sm:text-2xl ">{name}</h3>
         <div className="flex w-fit gap-2" >
           <a target="_blank" href={githubLink}>
-            <GithubIcon size={15} />
+            <GithubIcon color="white" size={15} />
           </a>
           <a target="_blank" href={liveLink}>
-            <ExternalLinkIcon href={liveLink} size={15} />
+            <ExternalLinkIcon color="white" size={15} />
           </a>
 
         </div>

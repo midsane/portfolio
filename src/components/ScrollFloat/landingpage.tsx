@@ -3,6 +3,7 @@ import { SplitText } from "../SplitText/SplitText"
 import { useEffect, useState } from "react";
 import { BlurText } from "../BlurText/BlurText";
 import { ArrowUp } from "lucide-react";
+import { CircularText } from "../CircularText/CircularText";
 
 export function LandingPage() {
 
@@ -69,7 +70,7 @@ export function LandingPage() {
 
         {startText2Animation ? <div className="flex flex-col">
           {showSigmaImage &&
-            <div  className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4">
               <span className="overflow-hidden h-[500px] relative" >
                 <motion.img
                   initial={{ opacity: 0, top: "10%" }}
@@ -105,16 +106,28 @@ export function LandingPage() {
                 className="w-fit p-2 m-auto border border-white/20 rounded-full" ><ArrowUp />
               </motion.div>
             </div>}
-          {showSigmaImage && <motion.div
-          initial={{bottom:-500, opacity: 1}}
-          animate={{bottom: 0, opacity: 0}}
-          transition={{duration: 2}}
 
-          className="absolute left-0"
-          >
-            
-            <img  src="/aeroplane1.jpg" />
-            </motion.div>}
+          {showSigmaImage &&
+            <>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2  sm:top-28 sm:right-28">
+                <CircularText
+                  radius={80}
+                  text="Full*Stack*Web*Dev"
+                  onHover="speedUp"
+                  spinDuration={20}
+                  className="custom-class"
+                />
+              </div>
+              <motion.div
+                initial={{ bottom: -500, opacity: 1 }}
+                animate={{ bottom: 0, opacity: 0 }}
+                transition={{ duration: 2 }}
+
+                className="absolute left-0"
+              >
+
+                <img src="/aeroplane1.jpg" />
+              </motion.div> </>}
           {!showSigmaImage &&
             <motion.div>
 
@@ -126,7 +139,9 @@ export function LandingPage() {
                 onAnimationComplete={() => { }}
                 className="md:text-7xl text-3xl xl:text-8xl mb-8"
               />
-            </motion.div>}
+            </motion.div>
+
+          }
         </div>
 
           :
