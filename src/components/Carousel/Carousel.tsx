@@ -1,26 +1,15 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 
 interface CarouselProps {
   images: string[]
-  autoSwitchInterval?: number // in milliseconds
+  autoSwitchInterval?: number
   className?: string
 }
 
-export  function Carousel({ images, autoSwitchInterval = 3000, className = "" }: CarouselProps) {
+export function Carousel({ images, className = "" }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
-
-  // Auto-switch functionality
-  useEffect(() => {
-    if (images.length <= 1) return
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1))
-    }, autoSwitchInterval)
-
-    return () => clearInterval(interval)
-  }, [images.length, autoSwitchInterval])
 
   const goToPrevious = () => {
     setCurrentIndex(currentIndex === 0 ? images.length - 1 : currentIndex - 1)
@@ -42,12 +31,12 @@ export  function Carousel({ images, autoSwitchInterval = 3000, className = "" }:
   return (
     <div className={`relative w-full max-w-4xl mx-auto ${className}`}>
       {/* Main image container */}
-      <div className="relative  sm:h-36 sm:w-64 h-24 w-44  border border-white  overflow-hidden rounded-lg bg-transparent/20">
+      <div className="relative  sm:h-36 sm:w-64 h-24 w-44  border border-stone-800  overflow-hidden rounded-lg bg-transparent/20">
         <img
           src={images[currentIndex] || "/placeholder.svg"}
           alt={`Slide ${currentIndex + 1}`}
           className="object-contain transition-opacity duration-500"
-         
+
         />
 
         {/* Navigation arrows */}
@@ -71,17 +60,17 @@ export  function Carousel({ images, autoSwitchInterval = 3000, className = "" }:
                duration-200 backdrop-blur-sm"
               aria-label="Next image"
             >
-              <ChevronRight className="sm:w-5 sm:h-5 w-3 h-3 "/>
+              <ChevronRight className="sm:w-5 sm:h-5 w-3 h-3 " />
             </div>
-           
+
           </>
         )}
 
         {/* Image counter */}
-  
+
       </div>
 
-   
+
     </div>
   )
 }

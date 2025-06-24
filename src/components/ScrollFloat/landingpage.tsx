@@ -11,6 +11,18 @@ export function LandingPage() {
   const [startText2Animation, setStartText2Animation] = useState(false);
   const [showSigmaImage, setShowSigmaImage] = useState(false);
   const [yValues, setYValues] = useState([-430, -400, -390, 200]);
+  const [startScrolling, setStartScrolling] = useState(false)
+  
+  useEffect(() => {
+
+    if (startScrolling) document.body.style.overflow = '';
+    else document.body.style.overflow = 'hidden';
+
+    return () => {
+
+      document.body.style.overflow = '';
+    };
+  }, [startScrolling]);
 
   useEffect(() => {
     const updateY = () => {
@@ -30,7 +42,7 @@ export function LandingPage() {
     return () => window.removeEventListener("resize", updateY);
   }, []);
 
-  return <section className="bg-black overflow-hidden relative h-dvh px-20 w-full flex justify-center items-center" >
+  return <section className={`bg-black overflow-hidden relative h-dvh px-20 w-full flex justify-center items-center`} >
 
     {!isAnimating && <>
       <motion.div
@@ -88,7 +100,7 @@ export function LandingPage() {
                   delay={0}
                   animateBy="words"
                   direction="top"
-                  onAnimationComplete={() => { }}
+                  onAnimationComplete={() => { setStartScrolling(true) }}
                   className="md:text-5xl text-3xl xl:text-6xl mb-28"
                 />
               </motion.div>

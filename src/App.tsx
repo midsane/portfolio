@@ -98,7 +98,7 @@ export default function App() {
       </div>
     </Section>
 
-    <Section id="connect" upperpad dark title="Connect Wit Me!">
+    <Section id="connect" upperpad dark title="Connect With Me!">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
