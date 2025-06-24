@@ -90,8 +90,8 @@ export default function App() {
 }
 
 
-const Project = ({ name, description, tech, imgLinks, githubLink, liveLink }:
-  ({ name: string, description: string, tech: string[], imgLinks: string[], githubLink: string, liveLink: string })) => {
+const Project = ({ name, description,  imgLinks, githubLink, liveLink }:
+  ({ name: string, description: string, imgLinks: string[], githubLink: string, liveLink: string })) => {
   return <div className="flex max-[450px]:flex-col sm:flex-col gap-6 sm:gap-10" >
     <Carousel images={imgLinks} />
     <div className="flex flex-col gap-3 justify-center items-start w-full">
