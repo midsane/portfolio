@@ -28,10 +28,33 @@ function typeWriterEffect() {
 typeWriterEffect();
 
 const skillData = {
-  html: "<p>HTML<h3>",
-  css: "<p>CSS:</p><p>Flexbox,Grid Bootstrap.</p>",
-  javascript: "<p>Javascript:</p> <p>DOM manipulation</p>",
-  nodejs: "<p>Node.js:</p> <p>NPM, Express.js, Axios.</p>",
+  Frontend: `
+         <div class="iconbox" >
+            <img src="./skills/icons8-html-5.svg" height="30" />
+            <img src="./skills/icons8-css.svg" height="30" />
+            <img src="./skills/icons8-javascript.svg" height="30" />
+            <img src="./skills/react.svg" height="30" />
+            <img src="./skills/Redux.webp" height="30" />
+            <img src="./skills/zustand.png" height="30" />
+            <img src="./skills/recoiljs.png" height="30" />
+            <img src="./skills/Tailwindcss icon.webp" height="30" />
+         <div>
+          `,
+  Backend: `
+         <div class="iconbox" >
+            <img src="./skills/icons8-nodejs.svg" height="30" />
+            <img src="./skills/icons8-express-js.svg" height="30" />
+            <img src="./skills/Typescript icon.webp" height="30" />
+            <img src="./skills/Graphql.webp" height="30" />
+            <img src="./skills/Socket.svg" height="30" />
+         <div>
+          `,
+  Devops: `
+         <div class="iconbox" >
+            <img src="./skills/Docker icon.svg" height="30" />
+            <img src="./skills/Github alt.svg" height="30" />
+         <div>
+          `,
   python: "<p>Python:</p> <p>Turtle module, OOPS</p>",
   postgresql: "<p>PostgreSQL:</p> <p>CRUD, pg</p>",
   react: "<p>React JS:</p> <p>useState, useRef, Context API, useEffect and more</p>"
@@ -74,6 +97,7 @@ window.addEventListener("scroll", () => {
 const skillIcons = document.querySelectorAll(".skill");
 skillIcons.forEach(icon => {
   icon.addEventListener("mouseover", () => {
+    console.log("icon alt:" + icon.alt)
     document.querySelector(".content").innerHTML = skillData[icon.alt];
     document.querySelector(`.${icon.classList[1]}`).classList.add("skill-box-hover");
   });
