@@ -121,9 +121,10 @@ function DockItem({
       onBlur={() => isHovered.set(0)}
       onClick={onClick}
       style={{ width: size, height: size }}
-      className={`relative inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-2 shadow-md ${className}`}
+      className={`relative cursor-pointer inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-2 shadow-md ${className}`}
       tabIndex={0}
     >
+    
       <div className="flex items-center justify-center">{icon}</div>
       <DockLabel label={label} isHovered={isHovered} />
     </motion.div>

@@ -10,12 +10,39 @@ import { Carousel } from "./components/Carousel/Carousel";
 
 
 export default function App() {
+
+
   const items = [
-    { icon: <a href="#about-me" ><UserRound color="white" size={15} /></a>, label: 'About me', onClick: () => { } },
-    { icon: <a href="#my-projects" ><Presentation color="white" size={15} /></a>, label: 'Projects', onClick: () => { } },
-    { icon: <a href="#my-skills" ><Book color="white" size={15} /></a>, label: 'Skills', onClick: () => { } },
-    { icon: <a href="#connect" ><Signal color="white" size={15} /></a>, label: 'Connect', onClick: () => { } },
+    {
+      icon: <UserRound color="white" size={15} />,
+      label: 'About me',
+      onClick: () => {
+        document.getElementById('about-me')?.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      icon: <Presentation color="white" size={15} />,
+      label: 'Projects',
+      onClick: () => {
+        document.getElementById('my-projects')?.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      icon: <Book color="white" size={15} />,
+      label: 'Skills',
+      onClick: () => {
+        document.getElementById('my-skills')?.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      icon: <Signal color="white" size={15} />,
+      label: 'Connect',
+      onClick: () => {
+        document.getElementById('connect')?.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
   ];
+
 
 
   return <main className="overflow-hidden w-dvw bg-black">
@@ -45,9 +72,9 @@ export default function App() {
 
         </motion.div>
 
-        <p className="text-2xl text-black" >Pre-final year full-stack dev building clean, scalable 
-          web apps with React, Node, and Prisma. Currently working on TubeSpace, a 
-          YouTuber One Click Upload Automation. Exploring GenAI, blockchain, and real-world 
+        <p className="text-2xl text-black" >Pre-final year full-stack dev building clean, scalable
+          web apps with React, Node, and Prisma. Currently working on TubeSpace, a
+          YouTuber One Click Upload Automation. Exploring GenAI, blockchain, and real-world
           tech like Docker, gRPC & Kubernetes. <span className="text-emerald-500" >Let’s make web dev cool again.</span>
         </p>
       </div>
@@ -95,7 +122,7 @@ export default function App() {
 }
 
 
-const Project = ({ name, description,  imgLinks, githubLink, liveLink }:
+const Project = ({ name, description, imgLinks, githubLink, liveLink }:
   ({ name: string, description: string, imgLinks: string[], githubLink: string, liveLink: string })) => {
   return <div className="flex max-[450px]:flex-col sm:flex-col gap-6 sm:gap-10" >
     <Carousel images={imgLinks} />
