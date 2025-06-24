@@ -45,7 +45,7 @@ export default function App() {
 
 
 
-  return <main className="overflow-hidden w-dvw bg-black">
+  return <main className="overflow-hidden w-screen bg-black">
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}

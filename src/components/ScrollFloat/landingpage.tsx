@@ -42,7 +42,7 @@ export function LandingPage() {
     return () => window.removeEventListener("resize", updateY);
   }, []);
 
-  return <section className={`bg-black overflow-hidden relative h-dvh px-20 w-full flex justify-center items-center`} >
+  return <section className={`bg-black overflow-hidden relative h-screen px-20 w-full flex justify-center items-center`} >
 
     {!isAnimating && <>
       <motion.div
