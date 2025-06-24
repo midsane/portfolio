@@ -106,16 +106,16 @@ export function LandingPage() {
               </motion.div>
 
               <motion.div
-                initial={{ y: 10 }}
+                initial={{ y: 10, opacity: 0 }}
 
-                animate={{ y: [0, 10, 0, 10, 0] }}
+                animate={{opacity:1, y: [0, 10, 0, 10, 0] }}
                 transition={{
                   delay: 2,
                   duration: 2,
                   times: [0, 0.25, 0.5, 0.75, 1],
                   ease: "easeIn"
                 }}
-                className="w-fit p-2 m-auto border border-white/20 rounded-full" ><ArrowUp />
+                className="w-fit p-2 m-auto max-[400px]:mb-20 border border-white/20 rounded-full" ><ArrowUp />
               </motion.div>
             </div>}
 
