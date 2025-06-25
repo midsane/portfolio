@@ -12,7 +12,15 @@ export function LandingPage() {
   const [showSigmaImage, setShowSigmaImage] = useState(false);
   const [yValues, setYValues] = useState([-430, -400, -390, 200]);
   const [startScrolling, setStartScrolling] = useState(false)
-  
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setStartScrolling(true)
+    }, 4000);
+
+    return () => clearTimeout(timeout)
+  }, [])
+
   useEffect(() => {
 
     if (startScrolling) document.body.style.overflow = '';
@@ -43,6 +51,21 @@ export function LandingPage() {
   }, []);
 
   return <section className={`bg-black overflow-hidden relative h-screen px-20 w-full flex justify-center items-center`} >
+    {startScrolling &&
+      <motion.div
+        initial={{ y: 10, opacity: 0 }}
+
+        animate={{ opacity: [1, 1, 1, 1, 1, 1, 0], y: [0, 15, 0, 15, 0, 15, 0] }}
+        transition={{
+          duration: 2,
+          times: [0, 0.14, 0.28, 0.44, 0.60, 0.74, 0.88, 1],
+          ease: "easeIn"
+        }}
+        className="w-fit z-50 fixed bottom-10 
+        bg-black
+        right-5 p-2 m-auto max-[400px]:mb-20 border border-white/40 rounded-full" ><ArrowUp fill="white" />
+        <p className="absolute text-emerald-500 -bottom-7 -translate-x-1/2 w-20 text-sm left-1/2 text-center" >scroll down</p>
+      </motion.div>}
 
     {!isAnimating && <>
       <motion.div
@@ -103,19 +126,6 @@ export function LandingPage() {
                   onAnimationComplete={() => { setStartScrolling(true) }}
                   className="md:text-5xl text-3xl xl:text-6xl mb-28"
                 />
-              </motion.div>
-
-              <motion.div
-                initial={{ y: 10, opacity: 0 }}
-
-                animate={{opacity:1, y: [0, 10, 0, 10, 0] }}
-                transition={{
-                  delay: 2,
-                  duration: 2,
-                  times: [0, 0.25, 0.5, 0.75, 1],
-                  ease: "easeIn"
-                }}
-                className="w-fit p-2 m-auto max-[400px]:mb-20 border border-white/20 rounded-full" ><ArrowUp />
               </motion.div>
             </div>}
 

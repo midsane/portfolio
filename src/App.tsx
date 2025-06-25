@@ -1,146 +1,24 @@
-import { motion } from "framer-motion"
-import { LandingPage } from "./components/ScrollFloat/landingpage";
-import { Book, ExternalLinkIcon, Github, GithubIcon, Linkedin, Presentation, Signal, Twitter, UserRound } from "lucide-react";
-import { Section } from "./components/section";
-import { IconButton, Tooltip } from "@mui/material";
-import { projectsData, skillIcons, skillText } from "./constant";
-import { Dock } from "./components/Dock/Dock";
-import { Carousel } from "./components/Carousel/Carousel";
-
+import { AboutMe } from "./components/page-sections/aboutme";
+import { ConnectWithMe } from "./components/page-sections/connectwithme";
+import { LandingPage } from "./components/page-sections/landingpage";
+import { MyProjects } from "./components/page-sections/my-projects";
+import { MySkills } from "./components/page-sections/myskills";
+import { NavigationDock } from "./components/page-sections/navigation-dock";
 
 
 export default function App() {
 
-
-  const items = [
-    {
-      icon: <UserRound color="white" size={15} />,
-      label: 'About me',
-      onClick: () => {
-        document.getElementById('about-me')?.scrollIntoView({ behavior: 'smooth' });
-      },
-    },
-    {
-      icon: <Presentation color="white" size={15} />,
-      label: 'Projects',
-      onClick: () => {
-        document.getElementById('my-projects')?.scrollIntoView({ behavior: 'smooth' });
-      },
-    },
-    {
-      icon: <Book color="white" size={15} />,
-      label: 'Skills',
-      onClick: () => {
-        document.getElementById('my-skills')?.scrollIntoView({ behavior: 'smooth' });
-      },
-    },
-    {
-      icon: <Signal color="white" size={15} />,
-      label: 'Connect',
-      onClick: () => {
-        document.getElementById('connect')?.scrollIntoView({ behavior: 'smooth' });
-      },
-    },
-  ];
-
-
-
-  return <main className="overflow-hidden overflow-x-hidden w-screen bg-black">
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1 }}
-      className="fixed z-50 left-1/2 -translate-x-1/2 bottom-3" >
-      <Dock
-        items={items}
-        panelHeight={68}
-        baseItemSize={50}
-        magnification={70}
-      />
-    </motion.div>
-    <LandingPage />
-    <Section id="about-me" title="About Me!">
-      <div className="flex-col flex  justify-center px-6 md:px-20 items-center gap-10">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.5 }}
-          className="p-1 border-white/30 rounded max-[330px]:w-1/4 sm:w-1/6 w-1/3 h-fit "
-        >
-          <img src="/rin.jpeg" />
-
-        </motion.div>
-
-        <p className="text-2xl text-black" >Pre-final year full-stack dev building clean, scalable
-          web apps with React, Node, and Prisma. Currently working on TubeSpace, a
-          YouTuber One Click Upload Automation. Exploring GenAI, blockchain, and real-world
-          tech like Docker, gRPC & Kubernetes. <span className="text-emerald-500" >Let’s make web dev cool again.</span>
-        </p>
-      </div>
-    </Section>
-
-    <Section id="my-projects" upperpad dark title="My Projects!">
-      <div className="border max-[450px]:5px border-stone-900 w-full md:justify-center md:overflow-x-scroll  overflow-hidden  rounded p-4 md:p-10 flex md:flex-row flex-col gap-10" >
-        {projectsData.map((data, ind) => <Project {...data} key={ind} />)}
-      </div>
-    </Section>
-
-    <Section id="my-skills" title="My Skills!">
-      <div className="border border-stone-900 justify-center rounded sm:mr-0 mr-3 p-0 sm:p-10 w-fit flex flex-wrap gap-3 sm:gap-4" >
-        {skillIcons.map((path, i) =>
-          <Tooltip key={i} placement="top" arrow title={skillText[i]}>
-            <IconButton>
-              <img src={path} className="h-10" />
-            </IconButton>
-          </Tooltip>
-        )}
-      </div>
-    </Section>
-
-    <Section id="connect" upperpad dark title="Connect With Me!">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: false, amount: 0.5 }}
-        className="p-1  border-white/30 rounded w-full sm:w-1/4 md:w-1/6 h-fit "
-      >
-        <img src="/thened.jpg" />
-
-      </motion.div>
-
-      <motion.div className="absolute flex mb-32 mr-8 sm:mb-20 z-40 gap-10 " >
-        <a className="no-underline text-inherit outline-none focus:ring-0" target="_blank" href="https://x.com/no_more_mid"><Twitter color="white" fill="white" className="cursor-pointer hover:scale-110 duration-100 ease-in" /></a>
-        <a target="_blank" href="https://github.com/midsane"><Github fill="white" className="cursor-pointer hover:scale-110 duration-100 ease-in" color="white" /></a>
-        <a target="_blank" href="https://www.linkedin.com/in/aditya-raj-846018294/"><Linkedin fill="white" className="cursor-pointer hover:scale-110 duration-100 ease-in" color="white" /></a>
-      </motion.div>
-
-      <p className="text-sm fixed  left-2 bottom-2 text-gray-400">© Midsane</p>
-    </Section>
-  </main>
+  return (
+    <main className="overflow-hidden overflow-x-hidden w-screen bg-black">
+      <NavigationDock />
+      <LandingPage />
+      <AboutMe />
+      <MyProjects />
+      <MySkills />
+      <ConnectWithMe />
+    </main>
+  )
 }
 
 
-const Project = ({ name, description, imgLinks, githubLink, liveLink }:
-  ({ name: string, description: string, imgLinks: string[], githubLink: string, liveLink: string })) => {
-  return <div className="flex  md:flex-col gap-6 max-[450px]:gap-3 md:gap-10" >
-    <Carousel images={imgLinks} />
-    <div className="flex flex-col gap-2 justify-center items-start w-full">
-      <span className="flex justify-between items-center w-full" >
-        <h3 className="max-[450px]:text-sm text-xl md:text-2xl ">{name}</h3>
-        <div className="flex w-fit gap-1" >
-          <a target="_blank" href={githubLink}>
-            <GithubIcon color="white" size={15} />
-          </a>
-          <a target="_blank" href={liveLink}>
-            <ExternalLinkIcon color="white" size={15} />
-          </a>
-
-        </div>
-      </span>
-      <p className="max-[450px]:text-xs  md:text-lg opacity-75" >{description}</p>
-    </div>
-  </div>
-}
 
