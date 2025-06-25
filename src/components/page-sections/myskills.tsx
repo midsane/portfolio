@@ -11,7 +11,7 @@ export const MySkills = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.5 }}
-            className="border border-stone-900 justify-center rounded sm:mr-0 mr-3 p-0 sm:p-10 w-fit flex flex-wrap gap-3 sm:gap-4" >
+            className="border border-stone-900 justify-center rounded sm:mr-0 mr-1 p-0 sm:p-10 w-fit flex flex-wrap gap-3 sm:gap-4" >
             {skillIcons.map((path, i) =>
                 <Tooltip key={i} placement="top" arrow title={skillText[i]}>
                     <IconButton>

@@ -21,6 +21,6 @@ export const ConnectWithMe = () => {
             <a target="_blank" href="https://www.linkedin.com/in/aditya-raj-846018294/"><Linkedin fill="white" className="cursor-pointer hover:scale-110 duration-100 ease-in" color="white" /></a>
         </motion.div>
 
-        <p className="text-sm fixed  left-2 bottom-2 text-gray-400">© Midsane</p>
+        <p className="text-sm fixed opacity-70 left-1 bottom-1 text-gray-400">© Midsane</p>
     </Section>)
 }

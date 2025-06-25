@@ -12,8 +12,13 @@ export const skillIcons = [
     "/Typescript icon.webp",
     "/Graphql.webp",
     "/Socket.svg",
+    "/ubuntu.png",
     "/Docker icon.svg",
+    "/git.png",
     "/Github alt.svg",
+    "/turborepo.png",
+    "/framer-motion.png"
+
 ];
 
 export const skillText = [
@@ -30,8 +35,12 @@ export const skillText = [
     "TypeScript",
     "GraphQL",
     "Socket.IO",
+    "Ubuntu",
     "Docker",
+    "Git",
     "GitHub",
+    "Turborepo",
+    "Framer Motion"
 ];
 
 

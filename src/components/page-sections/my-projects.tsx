@@ -4,7 +4,7 @@ import { Section } from "../section"
 import { motion } from "framer-motion"
 
 export const MyProjects = () => {
-    return (<Section id="my-projects" upperpad dark title="My Projects!">
+    return (<Section id="my-projects"  dark title="My Projects!">
         <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
