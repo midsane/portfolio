@@ -34,14 +34,14 @@ export function LandingPage() {
 
   useEffect(() => {
     const updateY = () => {
-      if (window.innerWidth < 640) {
-        setYValues([-300, -270, -260, 1000]);
-      } else if (window.innerWidth < 1024) {
 
-        setYValues([-400, -370, -360, 900]);
-      } else {
 
-        setYValues([-430, -400, -390, 800]);
+      if (window.innerWidth < 800) {
+        setYValues([-350, -320, -310, 900]);
+      }
+      else {
+
+        setYValues([-360, -340, -330, 900]);
       }
     };
 
