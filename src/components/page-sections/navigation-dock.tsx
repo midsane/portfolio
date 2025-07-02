@@ -1,5 +1,4 @@
 import { motion } from "framer-motion"
-import { Dock } from "../Dock/Dock"
 import { Book, Presentation, Signal, UserRound } from "lucide-react";
 
 
@@ -38,14 +37,20 @@ export const NavigationDock = () => {
 
     return (<motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
-        className="fixed z-50 left-1/2 -translate-x-1/2 bottom-3" >
-        <Dock
-            items={items}
-            panelHeight={68}
-            baseItemSize={50}
-            magnification={70}
-        />
+        animate={{ opacity: 1, scale: 1.1 }}
+        transition={{ duration: 0.4 }}
+        className="fixed z-50 top-5 flex gap-2 left-16 sm:left-20 lg:left-24 border  rounded-sm border-white/20 justify-center items-center" >
+        {items.map((item, index) => (
+            <motion.div
+                key={index}
+                className="flex items-center gap-2 mb cursor-pointer hover:bg-stone-900/10 p-2 rounded"
+                onClick={item.onClick}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                {item.icon}
+                <span className="text-sm sm:block hidden">{item.label}</span>
+            </motion.div>
+        ))}
     </motion.div>)
 }

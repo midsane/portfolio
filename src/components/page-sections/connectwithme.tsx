@@ -9,7 +9,7 @@ export const ConnectWithMe = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.5 }}
-            className="p-1  border-white/30 rounded w-full sm:w-1/4 md:w-1/6 h-fit "
+            className="p-1  bg-radial-[500px] bg-black from-blue-400 via-black/80 to-transparent  border-white/30 rounded w-full sm:w-1/4 md:w-1/6 h-fit "
         >
             <img src="/thened.jpg" />
 

@@ -8,16 +8,16 @@ export const skillIcons = [
     "/recoiljs.png",
     "/Tailwindcss icon.webp",
     "/icons8-nodejs.svg",
-    "/icons8-express-js.svg",
+    "/express.png",
     "/MongoDB.png",
-    "/prisma-4.svg",
+    "/prisma.png",
     "/Typescript icon.webp",
     "/Graphql.webp",
     "/Socket.svg",
     "/ubuntu.png",
     "/Docker icon.svg",
     "/git.png",
-    "/Github alt.svg",
+
     "/turborepo.png",
     "/framer-motion.png"
 
@@ -42,7 +42,7 @@ export const skillText = [
     "Ubuntu",
     "Docker",
     "Git",
-    "GitHub",
+
     "Turborepo",
     "Framer Motion"
 ];

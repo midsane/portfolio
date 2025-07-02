@@ -1,9 +1,9 @@
 import { motion } from "framer-motion"
-import { SplitText } from "../SplitText/SplitText"
 import { useEffect, useState } from "react";
 import { BlurText } from "../BlurText/BlurText";
 import { ArrowUp } from "lucide-react";
 import { CircularText } from "../CircularText/CircularText";
+import { SlideCharsText } from "../text-animation";
 
 export function LandingPage() {
 
@@ -37,11 +37,14 @@ export function LandingPage() {
 
 
       if (window.innerWidth < 800) {
-        setYValues([-350, -320, -310, 900]);
+        setYValues([-160, -140, -100, 600]);
+      }
+      if (window.innerWidth < 500) {
+        setYValues([-110, -90, -70, 600]);
       }
       else {
 
-        setYValues([-360, -340, -330, 900]);
+        setYValues([-220, -160, -150, 600]);
       }
     };
 
@@ -50,7 +53,7 @@ export function LandingPage() {
     return () => window.removeEventListener("resize", updateY);
   }, []);
 
-  return <section className={`bg-black overflow-hidden relative h-screen px-20 w-full flex justify-center items-center`} >
+  return <section className={` overflow-hidden relative h-screen px-20 w-full flex justify-center items-center`} >
     {startScrolling &&
       <motion.div
         initial={{ y: 10, opacity: 0 }}
@@ -61,10 +64,10 @@ export function LandingPage() {
           times: [0, 0.14, 0.28, 0.44, 0.60, 0.74, 0.88, 1],
           ease: "easeIn"
         }}
-        className="w-fit z-50 fixed bottom-10 
-        bg-black
-        right-5 p-2 m-auto max-[400px]:mb-20 border border-white/40 rounded-full" ><ArrowUp fill="white" />
-        <p className="absolute text-emerald-500 -bottom-7 -translate-x-1/2 w-20 text-sm left-1/2 text-center" >scroll down</p>
+        className="w-fit z-50 flex justify-between items-center fixed bottom-10 
+        
+        right-5 p-2 m-auto max-[400px]:mb-20 text-black bg-blue-400 rounded-full" ><ArrowUp />
+       
       </motion.div>}
 
     {!isAnimating && <>
@@ -78,11 +81,11 @@ export function LandingPage() {
           setShowSigmaImage(true)
         }}
         transition={{
-          duration: 2,
+          duration: 1,
           times: [0, 0.5, 0.7, 1],
           ease: "easeInOut",
         }}
-        className={`absolute bg-white z-30  left-0 h-1/2 w-full`}>
+        className={`absolute bg-stone-900 z-30  left-0 h-1/2 w-full`}>
 
       </motion.div>
       <motion.div
@@ -92,26 +95,29 @@ export function LandingPage() {
         }}
         onAnimationComplete={() => setIsAnimating(true)}
         transition={{
-          duration: 2,
+          duration: 1,
           times: [0, 0.5, 0.7, 1],
           ease: "easeInOut",
         }}
-        className={`absolute bg-white z-30 left-0 h-1/2 w-full`}>
+        className={`absolute bg-stone-900 z-30 left-0 h-1/2 w-full`}>
 
       </motion.div>
     </>}
-    <div className="absolute bg-black z-20 top-0 left-0 h-full w-full justify-center items-center flex" >
+    <div className="absolute  z-20 top-0 left-0 h-full w-full justify-center items-center flex" >
       <div className=" px-16 rounded w-full sm:w-1/2 h-full flex justify-center items-center sm:h-1/2" >
 
         {startText2Animation ? <div className="flex flex-col">
           {showSigmaImage &&
-            <div className="flex flex-col gap-4">
-              <span className="overflow-hidden h-[500px] relative" >
+            <div className="flex bg-radial-[20px] from-blue-400 via-black/80 to-transparent flex-col gap-4">
+              <span className="overflow-hidden 
+               
+               flex justify-center items-center
+                h-[500px] relative" >
                 <motion.img
                   initial={{ opacity: 0, top: "10%" }}
                   animate={{ opacity: 1, top: "-0%" }}
                   transition={{ duration: 1, ease: "easeIn" }}
-                  className="absolute -top-1/2" src="/sigma.jpg" />
+                  className="absolute -top-1/2  bg-radial-[0px] from-blue-400 via-black/80 to-transparent " src="/sigma.jpg" />
               </span>
               <motion.div
                 initial={{ y: -100, opacity: 0 }}
@@ -145,7 +151,9 @@ export function LandingPage() {
                 animate={{ bottom: 0, opacity: 0 }}
                 transition={{ duration: 2 }}
 
-                className="absolute left-0"
+                className="
+                bg-radial-[500px] bg-black from-blue-400 via-black/80 to-transparent
+                p-2 sm:p-10 absolute left-0  "
               >
 
                 <img src="/aeroplane1.jpg" />
@@ -167,41 +175,31 @@ export function LandingPage() {
         </div>
 
           :
-          <SplitText
-            text="Hey There !, Welcome to my website"
-            className="md:text-7xl text-2xl xl:text-8xl font-semibold text-center"
-            delay={40}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-            onLetterAnimationComplete={() => {
+
+          <SlideCharsText
+            onAnimationEnd={() => {
               setTimeout(() => {
                 setStartText2Animation(true)
-              }, 550);
+              }, 700);
             }}
-          />
+            text={"Hey There !, Welcome to my website"} />
         }
 
       </div>
       <motion.span
         initial={{ y: 0, rotate: 0 }}
         animate={{
-          y: yValues,
+          top: yValues,
           rotate: [0, -3, 7, -6, 5, 0, 0, 0],
           opacity: [1, 1, 1, 1, 1, 1, 1, 0]
         }}
         onAnimationComplete={() => setIsAnimating(false)}
         transition={{
           duration: 2,
-          times: [0, 0.25, 0.75, 1],
+          times: [0, 0.25, 0.4, 1],
           ease: "easeInOut",
           rotate: {
-            duration: 5,
+            duration: 2,
             delay: 1,
             repeat: 0,
             ease: "easeInOut",
@@ -212,7 +210,7 @@ export function LandingPage() {
           fontSize: "2rem",
         }}
 
-        className="fixed sm:overflow-hidden  sm:h-[420px]  right-1/2 translate-x-1/2" >
+        className="fixed sm:overflow-hidden sm:h-[420px] right-1/2 translate-x-1/2" >
         <img src="/spiderman-hero.png" />
       </motion.span>
     </div>
