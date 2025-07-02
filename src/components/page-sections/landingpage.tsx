@@ -127,10 +127,10 @@ export function LandingPage() {
                 <BlurText
                   text="I am midsane"
                   delay={0}
-                  animateBy="words"
-                  direction="top"
+                  animateBy="letters"
+                  direction="bottom"
                   onAnimationComplete={() => { setStartScrolling(true) }}
-                  className="md:text-5xl text-3xl xl:text-6xl mb-28"
+                  className="md:text-5xl w-full text-2xl text-center sm:text-3xl xl:text-6xl mb-28"
                 />
               </motion.div>
             </div>}
@@ -167,7 +167,7 @@ export function LandingPage() {
                 animateBy="words"
                 direction="top"
                 onAnimationComplete={() => { }}
-                className="md:text-7xl text-3xl xl:text-8xl mb-8"
+                className="md:text-7xl text-center text-2xl sm:text-3xl xl:text-8xl mb-8"
               />
             </motion.div>
 
@@ -176,7 +176,7 @@ export function LandingPage() {
 
           :
 
-          <div className="flex justify-center items-center flex-col gap-4">
+          <div className="flex justify-center text-center items-center flex-col gap-1">
             <SlideCharsText
               onAnimationEnd={() => {
                 setTimeout(() => {
