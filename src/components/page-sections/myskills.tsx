@@ -15,7 +15,7 @@ export const MySkills = () => {
             {skillIcons.map((path, i) =>
                 <Tooltip key={i} placement="top" arrow title={skillText[i]}>
                     <IconButton>
-                        <img src={path} className="h-10" />
+                        <img src={path} className="h-7 sm:h-10" />
                     </IconButton>
                 </Tooltip>
             )}
