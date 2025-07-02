@@ -130,7 +130,7 @@ export function LandingPage() {
                   animateBy="letters"
                   direction="bottom"
                   onAnimationComplete={() => { setStartScrolling(true) }}
-                  className="md:text-5xl w-full text-2xl text-center sm:text-3xl xl:text-6xl mb-28"
+                  className="text-2xl sm:text-3xl md:text-4xl w-full text-center  mb-28"
                 />
               </motion.div>
             </div>}
@@ -167,7 +167,7 @@ export function LandingPage() {
                 animateBy="words"
                 direction="top"
                 onAnimationComplete={() => { }}
-                className="md:text-7xl text-center text-2xl sm:text-3xl xl:text-8xl mb-8"
+                className="text-center text-2xl sm:text-3xl md:text-4xl mb-8"
               />
             </motion.div>
 

@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 export const MyProjects = () => {
     return (<Section id="my-projects" dark title="My Projects!">
         <>
-            <p className="px-2 sm:text-2xl" >To know more about the project, click on it to enlarge it!!</p>
+            <p className="px-2 sm:text-2xl text-white/90" >To know more about the project, click on it to enlarge it!!</p>
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}

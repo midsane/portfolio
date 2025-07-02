@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export function SlideCharsText({ dark = false, text, onAnimationEnd = () => { } }: { onAnimationEnd?: () => any, dark?: boolean, text: string }) {
     return (
-        <div className={`${dark ? "text-white" : "text-white"} text-2xl sm:text-4xl md:text-6xl font-semibold `}>
+        <div className={`${dark ? "text-white" : "text-white"} text-2xl sm:text-3xl md:text-4xl font-semibold `}>
             {text.split("").map((char, i) => (
                 <motion.span
                     key={i}
