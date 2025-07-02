@@ -39,11 +39,11 @@ export const Project = ({ name, description, imgLinks, githubLink, liveLink }:
         animate={{ opacity: 1, y: 0 }}/*  */
         exit={{ opacity: 0, y: 100 }}
         transition={{ duration: 0.3 }}
-        className={`${enlarge ? "px-16 sm:px-28 fixed top-1/2 left-1/2 z-[200] flex flex-col gap-5 justify-center items-center -translate-x-1/2 -translate-y-1/2 scale-[2]" : "flex md:flex-col gap-6 max-[450px]:gap-3 md:gap-10"} `} >
+        className={`${enlarge ? "px-16 sm:px-28 fixed top-1/2 left-1/2 z-[200] flex flex-col gap-5 justify-center items-center -translate-x-1/2 -translate-y-1/2 scale-[2]" : "flex lg:flex-col gap-6 max-[450px]:gap-3 lg:gap-10"} `} >
         <div className="w-fit " ><Carousel images={imgLinks} /></div>
         <div className="flex flex-col gap-2 justify-center items-start w-full">
           <span className="flex justify-between items-center w-full" >
-            <h3 className={`${!enlarge ? "max-[450px]:text-sm text-xl md:text-2xl " : "text-lg"}`}>{name}</h3>
+            <h3 className={`${!enlarge ? "max-[450px]:text-sm text-xl lg:text-2xl " : "text-lg"}`}>{name}</h3>
             <div className="flex w-fit gap-1" >
               <a target="_blank" href={githubLink}>
                 <GithubIcon  color="transparent" fill="white" size={15} />
@@ -54,7 +54,7 @@ export const Project = ({ name, description, imgLinks, githubLink, liveLink }:
 
             </div>
           </span>
-          <p className={`${enlarge ? "text-xs sm:text-sm" : "max-[450px]:text-xs  md:text-lg"} opacity-75`} >{description}</p>
+          <p className={`${enlarge ? "text-xs sm:text-sm" : "max-[450px]:text-xs  lg:text-lg"} opacity-75`} >{description}</p>
         </div>
       </motion.div> :
         <motion.div
@@ -64,11 +64,11 @@ export const Project = ({ name, description, imgLinks, githubLink, liveLink }:
           transition={{ duration: 0.3 }}
           exit={{ opacity: 0, y: -100 }}
           onClick={() => setEnlarge(true)}
-          className={`${enlarge ? "px-16 sm:px-28 fixed top-1/2 left-1/2 z-[200] flex flex-col gap-5 justify-center items-center -translate-x-1/2 -translate-y-1/2 scale-[2]" : "flex cursor-pointer md:flex-col gap-6 max-[450px]:gap-3 md:gap-10"} `} >
+          className={`${enlarge ? "px-16 sm:px-28 fixed top-1/2 left-1/2 z-[200] flex flex-col gap-5 justify-center items-center -translate-x-1/2 -translate-y-1/2 scale-[2]" : "flex cursor-pointer lg:flex-col gap-6 max-[450px]:gap-3 lg:gap-10"} `} >
           <div className="w-fit " ><Carousel noArrow images={imgLinks} /></div>
           <div className="flex flex-col gap-2 justify-center items-start w-full">
             <span className="flex justify-between items-center w-full" >
-              <h3 className={`${!enlarge ? "max-[450px]:text-sm text-xl md:text-2xl " : "text-lg"}`}>{name}</h3>
+              <h3 className={`${!enlarge ? "max-[450px]:text-sm text-xl lg:text-2xl " : "text-lg"}`}>{name}</h3>
               <div className="flex w-fit gap-1" >
                 <a target="_blank" href={githubLink}>
                   <GithubIcon color="white" size={15} />
@@ -79,7 +79,7 @@ export const Project = ({ name, description, imgLinks, githubLink, liveLink }:
 
               </div>
             </span>
-            <p className={`${enlarge ? "text-xs sm:text-sm" : "max-[450px]:text-xs  md:text-lg"} opacity-75`} >{description}</p>
+            <p className={`${enlarge ? "text-xs sm:text-sm" : "max-[450px]:text-xs  lg:text-lg"} opacity-75`} >{description}</p>
           </div>
         </motion.div>}
     </AnimatePresence>

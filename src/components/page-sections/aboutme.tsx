@@ -18,7 +18,7 @@ export const AboutMe = () => {
 
             </motion.div>
 
-            <p className="sm:text-2xl text-white/90" >Pre-final year full-stack dev building clean, scalable
+            <p className="sm:text-2xl md:px-32 sm:px-10 text-white/90" >Pre-final year full-stack dev building clean, scalable
                 web apps with React, Node, and Prisma. Currently working on TubeSpace, a
                 YouTuber One Click Upload Automation. Exploring GenAI, blockchain, and real-world
                 tech like Docker, gRPC & Kubernetes. <span className="text-emerald-500" >Let’s make web dev cool again.</span>
