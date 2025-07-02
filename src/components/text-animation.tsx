@@ -12,7 +12,7 @@ export function SlideCharsText({ dark = false, text, onAnimationEnd = () => { } 
                     animate={{ y: 0, opacity: 1 }}
                     onAnimationComplete={onAnimationEnd}
                     transition={{ delay: i * 0.005, duration: 0.4, type: "spring", stiffness: 100 }}
-                    className="inline-block"
+                    className="inline-block text-center"
                 >
                     {char === " " ? "\u00A0" : char}
                 </motion.span>

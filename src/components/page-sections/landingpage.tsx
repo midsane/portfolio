@@ -67,7 +67,7 @@ export function LandingPage() {
         className="w-fit z-50 flex justify-between items-center fixed bottom-10 
         
         right-5 p-2 m-auto max-[400px]:mb-20 text-black bg-blue-400 rounded-full" ><ArrowUp />
-       
+
       </motion.div>}
 
     {!isAnimating && <>
@@ -176,13 +176,22 @@ export function LandingPage() {
 
           :
 
-          <SlideCharsText
-            onAnimationEnd={() => {
-              setTimeout(() => {
-                setStartText2Animation(true)
-              }, 700);
-            }}
-            text={"Hey There !, Welcome to my website"} />
+          <div className="flex justify-center items-center flex-col gap-4">
+            <SlideCharsText
+              onAnimationEnd={() => {
+                setTimeout(() => {
+                  setStartText2Animation(true)
+                }, 700);
+              }}
+              text={"Hey There !"} />
+            <SlideCharsText
+              onAnimationEnd={() => {
+                setTimeout(() => {
+                  setStartText2Animation(true)
+                }, 700);
+              }}
+              text={"Welcome to my website"} />
+          </div>
         }
 
       </div>
