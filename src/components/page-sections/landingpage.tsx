@@ -183,14 +183,15 @@ export function LandingPage() {
                   setStartText2Animation(true)
                 }, 700);
               }}
-              text={"Hey There !"} />
+              text={"Initializing... "} />
             <SlideCharsText
+
               onAnimationEnd={() => {
                 setTimeout(() => {
                   setStartText2Animation(true)
                 }, 700);
               }}
-              text={"Welcome to my website"} />
+              text={"Loading Creativity..."} />
           </div>
         }
 
