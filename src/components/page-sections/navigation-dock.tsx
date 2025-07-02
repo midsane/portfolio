@@ -39,7 +39,7 @@ export const NavigationDock = () => {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1.1 }}
         transition={{ duration: 0.4 }}
-        className="fixed z-50 top-5 flex gap-2 left-16 sm:left-20 lg:left-24 border  rounded-sm border-white/20 justify-center items-center" >
+        className="fixed z-50 top-5 bg-black flex gap-2 left-16 sm:left-20 lg:left-24 border  rounded-sm border-white/20 justify-center items-center" >
         {items.map((item, index) => (
             <motion.div
                 key={index}
