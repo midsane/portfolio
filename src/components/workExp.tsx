@@ -3,7 +3,7 @@ import photogpt from '/photogpt.png';
 export function WorkExp() {
   return (
     <div id='work_exp' className="max-w-2xl mx-auto p-2 sm:p-6 ">
-      <div className="bg-background rounded-lg shadow-sm border border-border overflow-hidden">
+      <div className="bg-background rounded-2xl shadow-sm border border-border overflow-hidden">
         {/* macOS window controls */}
         <div className="flex items-center gap-2 px-4 py-3 bg-accent border-b border">
           <div className="w-3 h-3 rounded-full bg-red-500"></div>

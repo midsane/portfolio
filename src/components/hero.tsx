@@ -7,9 +7,9 @@ export const Hero = () => {
     <section className="min-h-screen flex flex-col items-center justify-center px-4 md:px-6 relative text-center">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-hero opacity-70" />
-      <div className="flex gap-5 justify-center items-end" >
-        <div className="w-20 dark:border dark:border-chart-4">
-          <img src={isagiClean} alt="midsane" className={`${loaded ? "blur-0" : "blur-sm animate-pulse"}`} onLoad={() => setLoaded(true)} />
+      <div className="flex gap-4 pt-10 justify-center items-end" >
+        <div className="w-14 dark:border dark:border-chart-4 rounded">
+          <img src={isagiClean} alt="midsane" className={` ${loaded ? "blur-0" : "blur-sm animate-pulse"}`} onLoad={() => setLoaded(true)} />
         </div>
         <p>midsane</p>
       </div>
