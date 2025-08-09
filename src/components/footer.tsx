@@ -25,21 +25,36 @@ export const Footer = () => {
                   <div className="absolute border-2 border-bg-chart-4 rounded-full 
                   bg-background sm:w-20 w-16 aspect-square flex justify-center items-center  
                   top-20 -left-9">
-                    <img className="w-8 sm:w-10" src={LinkedIn} />
+                    <a
+                      target="_blank"
+                      href="https://www.linkedin.com/in/aditya-raj-846018294/"
+                    ><img className="w-8 sm:w-10" src={LinkedIn} /></a>
                   </div>
 
                   <div className="absolute border-2 border-bg-chart-4 rounded-full bg-background sm:w-20 w-16 aspect-square flex justify-center items-center  
                   -top-4 left-5">
-                    <img className="w-8 sm:w-10" src={twitter} />
+                    <a
+                      target="_blank"
+                      href="https://x.com/no_more_mid">
+                      <img className="w-8 sm:w-10" src={twitter} />
+                    </a>
                   </div>
 
                   <div className="absolute border-2 border-bg-chart-4 rounded-full  bg-background sm:w-20 w-16  aspect-square flex justify-center items-center  
                   top-20 -right-10">
-                    <img className="w-8 sm:w-10" src={gmail} />
+                    <a
+                      target="_blank"
+                      href="mailto:adityaraj10544@gmail.com">
+                      <img className="w-8 sm:w-10" src={gmail} />
+                    </a>
                   </div>
                   <div className="absolute border-2 border-bg-chart-4 rounded-full  bg-background sm:w-20 w-16  aspect-square flex justify-center items-center  
                   -top-3 right-3">
-                    <img className="w-8 sm:w-10" src={github} />
+                    <a
+                      target="_blank"
+                      href="https://github.com/midsane">
+                      <img className="w-8 sm:w-10" src={github} />
+                    </a>
                   </div>
 
                 </span></span>&nbsp;

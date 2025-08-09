@@ -30,7 +30,8 @@ export const Navigation = () => {
             </a>
             <a
                 target="_blank"
-                href="https://x.com/no_more_mid">
+                href="https://x.com/no_more_mid"
+                >
                 <img src={twitter} alt="Twitter" className="w-7 h-7 cursor-pointer" />
             </a>
             <a target="_blank" href="https://medium.com/@adityaraj10544">

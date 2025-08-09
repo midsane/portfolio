@@ -83,7 +83,7 @@ export const SelectedProjects: React.FC = () => {
         <div className="flex flex-col gap-10 justify-center items-center">
           {projects.map((project, index) => (
             <React.Fragment key={project.id}>
-              <Card className="flex rounded-2xl border-none lg:flex-row gap-0 flex-col justify-center items-center h-full w-full">
+              <Card className="flex rounded-2xl lg:flex-row gap-0 flex-col justify-center items-center h-full w-full">
                 {/* Image Carousel */}
                 <CardContent className="flex justify-center items-center w-full lg:w-[60%]">
                   <Carousel className="w-full border-none rounded-2xl">
