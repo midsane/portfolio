@@ -62,7 +62,7 @@ const projects: Project[] = [
     githubLink: "https://github.com/midsane/midfruits",
     liveSiteLink: "https://midfruits.midsane.tech/",
     techStack: ["React", "Recoil", "Node.js", "Socket.IO", "Framer-Motion"],
-  },
+  }
 ];
 
 export const SelectedProjects: React.FC = () => {
@@ -158,9 +158,8 @@ const BlurImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
       src={src}
       alt={alt}
       onLoad={() => setLoaded(true)}
-      className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${
-        loaded ? "blur-0" : "blur-sm animate-pulse"
-      }`}
+      className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${loaded ? "blur-0" : "blur-sm animate-pulse"
+        }`}
     />
   );
 };
