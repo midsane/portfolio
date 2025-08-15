@@ -24,15 +24,26 @@ import tubespace2 from "/tubespace2.png";
 import midfruits1 from "/midfruits1.png";
 import midfruits2 from "/midfruits2.png";
 
+import sarimgpt1 from "/sarimgpt1.png";
+import sarimgpt2 from "/sarimgpt2.png";
+
+
+import sarimgptDemoVideo from "/sarimgpt.mp4"
+
 interface Project {
   id: string;
   title: string;
   description: string;
-  images: string[];
+  files: {
+    src: string;
+    type: FileType;
+  }[];
   githubLink: string;
   liveSiteLink: string;
   techStack: string[];
 }
+
+export type FileType = "image" | "video";
 
 const projects: Project[] = [
   {
@@ -40,7 +51,13 @@ const projects: Project[] = [
     title: "Tubespace",
     description:
       "Designed a collaborative video publishing platform that uploads large YouTube videos server-side to overcome poor internet at the creator’s end.",
-    images: [tubespace1, tubespace2],
+    files: [{
+      src: tubespace1,
+      type: "image"
+    }, {
+      src: tubespace2,
+      type: "image"
+    }],
     githubLink: "https://github.com/midsane/tubespace",
     liveSiteLink: "https://tubespace.studio",
     techStack: [
@@ -51,14 +68,47 @@ const projects: Project[] = [
       "Youtube Data API",
       "Redis",
       "Prisma",
+      "React-Query"
     ],
   },
   {
     id: "2",
+    title: "SarimGPT",
+    description:
+      "A Multi-Modal AI Chatbot for text and image generation",
+    files: [
+      {
+        src: sarimgptDemoVideo,
+        type: "video"
+      },
+      {
+        src: sarimgpt1,
+        type: "image"
+      },
+      {
+        src: sarimgpt2,
+        type: "image"
+      }
+    ],
+    githubLink: "https://github.com/midsane/SarimGPT",
+    liveSiteLink: "https://sarim-gpt.vercel.app/",
+    techStack: ["Next.js", "TRPC", "Supabase", "Shivaay API", "Gemini API"],
+  },
+  {
+    id: "3",
     title: "Midfruits",
     description:
       "Built a real-time multiplayer web game enabling players to create custom rooms, invite friends, and compete in dynamic fruit-catching battles.",
-    images: [midfruits1, midfruits2],
+    files: [
+      {
+        src: midfruits1,
+        type: "image"
+      },
+      {
+        src: midfruits2,
+        type: "image"
+      }
+    ],
     githubLink: "https://github.com/midsane/midfruits",
     liveSiteLink: "https://midfruits.midsane.tech/",
     techStack: ["React", "Recoil", "Node.js", "Socket.IO", "Framer-Motion"],
@@ -88,10 +138,23 @@ export const SelectedProjects: React.FC = () => {
                 <CardContent className="flex justify-center items-center w-full lg:w-[60%]">
                   <Carousel className="w-full border-none rounded-2xl">
                     <CarouselContent>
-                      {project.images.map((image, imgIndex) => (
+                      {project.files.map((file, imgIndex) => (
                         <CarouselItem key={imgIndex}>
                           <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-muted relative">
-                            <BlurImage src={image} alt={`${project.title} - ${imgIndex + 1}`} />
+                            {file.type === "image" ? (
+                              <BlurImage src={file.src} alt={`${project.title} - ${imgIndex + 1}`} />
+                            ) : (
+                              <video
+                                className="w-full h-full object-cover"
+                                autoPlay
+                                loop
+                                muted
+                                controls
+                              >
+                                <source src={file.src} type="video/mp4" />
+                                Your browser does not support the video tag.
+                              </video>
+                            )}
                           </div>
                         </CarouselItem>
                       ))}
