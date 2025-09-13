@@ -183,9 +183,9 @@ function CarouselPrevious({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-8 rounded-full",
+        "hidden sm:flex absolute size-8 rounded-full items-center justify-center",
         orientation === "horizontal"
-          ? "top-1/2 -left-12 -translate-y-1/2"
+          ? "top-1/2 left-4 -translate-y-1/2" // consistent left offset
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -193,7 +193,7 @@ function CarouselPrevious({
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft />
+      <ArrowLeft className="w-4 h-4" />
       <span className="sr-only">Previous slide</span>
     </Button>
   )
@@ -213,9 +213,9 @@ function CarouselNext({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-8 rounded-full",
+        "hidden sm:flex absolute size-8 rounded-full items-center justify-center",
         orientation === "horizontal"
-          ? "top-1/2 -right-12 -translate-y-1/2"
+          ? "top-1/2 right-4 -translate-y-1/2" // consistent right offset
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -223,7 +223,7 @@ function CarouselNext({
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight />
+      <ArrowRight className="w-4 h-4" />
       <span className="sr-only">Next slide</span>
     </Button>
   )
