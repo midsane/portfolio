@@ -61,9 +61,9 @@ export const Hero = () => {
         <h1 className="text-3xl tracking-tighter sm:text-4xl md:text-6xl lg:text-7xl font-semibold 
   leading-snug sm:leading-tight 
   mb-10 sm:mb-12 text-foreground">
-          I Create DApps <br />
+          I Create Websites <br />
           End To End <br />
-          Full Stack + Web3
+          Full Stack + GenAI
         </h1>
 
 
