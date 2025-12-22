@@ -212,7 +212,7 @@ export function FlipStackShowCase({
 
     return (
         <>
-            <div className="text-center mt-24 px-4">
+            <div className="text-center mt-24 sm:mt-32 mb-20 px-4">
                 <h2 className="text-4xl sm:text-6xl lg:text-7xl flagship-text-gradient font-semibold tracking-tight">
                     {header}
                     <span className="block text-foreground">{subHeader}</span>

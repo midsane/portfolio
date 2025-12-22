@@ -149,8 +149,9 @@ export const SelectedProjects: React.FC = () => {
       />
       <section
 
-        className="w-full py-12 md:py-24 lg:pb-32 bg-background"
+        className="w-full py-12 md:pb-24 md:pt-12 lg:pb-32 bg-background"
       >
+        <h1 className="px-4 md:px-5 text-center hidden sm:block" >There you have it!</h1>
         <div className="container px-4 md:px-6 max-w-6xl mx-auto">
           <motion.div
             className="flex flex-col items-center justify-center space-y-4 text-center mb-12"
