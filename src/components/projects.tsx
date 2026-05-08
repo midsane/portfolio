@@ -31,6 +31,8 @@ import kgpt2 from "/kanoongpt2.png";
 import sarimgptDemoVideo from "/sarimgpt.mp4";
 import woos1 from "/woos1.png"
 import woos2 from "/woos2.png"
+import eg1 from "./EdgeGuard.png";
+import em1 from "./EventMesh.png"
 
 import { CardSwap } from "./svg";
 import { FlipStackShowCase } from "./flipstack";
@@ -48,6 +50,28 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    id: "5",
+    title: "EdgeGuard",
+    description: "Distributed global Rate Limiter",
+    files: [
+      { src: eg1, type: "image" },
+    ],
+    githubLink: "https://github.com/midsane/EdgeGuard",
+    liveSiteLink: "https://github.com/midsane/EdgeGuard",
+    techStack: ["Redis", "AWS", "Docker", "Javascript"],
+  },
+  {
+    id: "6",
+    title: "EventMesh",
+    description: "EventMesh is a backend system that crawls news from the internet, analyzes each article using LLMs + vector embeddings, and automatically builds timelines of related events.",
+    files: [
+      { src: em1, type: "image" },
+    ],
+    githubLink: "https://github.com/midsane/EventMesh",
+    liveSiteLink: "https://github.com/midsane/EventMesh",
+    techStack: ["Typescript", "Pinecone", "GenAI", "Cohere AI", "GraphQL"],
+  },
   {
     id: "1",
     title: "Tubespace",
@@ -107,19 +131,7 @@ const projects: Project[] = [
     githubLink: "https://github.com/midsane/winter-of-open-source",
     liveSiteLink: "https://winter-of-open-source.vercel.app/",
     techStack: ["Next.js", "Firebase"],
-  },
-  {
-    id: "5",
-    title: "KanoonGPT",
-    description: "AI Legal Assistant for Indian Laws. Still in development!",
-    files: [
-      { src: kgpt1, type: "image" },
-      { src: kgpt2, type: "image" },
-    ],
-    githubLink: "https://github.com/Shreesammat/kanoonGPT",
-    liveSiteLink: "https://kanoon-gpt.vercel.app/",
-    techStack: ["Next.js", "TRPC", "Supabase", "Shivaay API", "Gemini API"],
-  },
+  }
 ];
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -140,13 +152,13 @@ const flipStackImages = [
 export const SelectedProjects: React.FC = () => {
   return (
     <div id="projects">
-      <FlipStackShowCase
+      {/* <FlipStackShowCase
         header="Selected Projects"
         subHeader=""
         desc="A showcase of my recent work, demonstrating my skills and passion
                 for building impactful applications."
         images={flipStackImages}
-      />
+      /> */}
       <section
 
         className="w-full py-12 md:pb-24 md:pt-12 lg:pb-32 bg-background"
