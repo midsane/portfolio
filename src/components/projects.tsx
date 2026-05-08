@@ -26,16 +26,13 @@ import midfruits1 from "/midfruits1.png";
 import midfruits2 from "/midfruits2.png";
 import sarimgpt1 from "/sarimgpt1.png";
 import sarimgpt2 from "/sarimgpt2.png";
-import kgpt1 from "/kanoongpt1.png";
-import kgpt2 from "/kanoongpt2.png";
+// import kgpt1 from "/kanoongpt1.png";
 import sarimgptDemoVideo from "/sarimgpt.mp4";
 import woos1 from "/woos1.png"
 import woos2 from "/woos2.png"
-import eg1 from "./EdgeGuard.png";
-import em1 from "./EventMesh.png"
-
+import eg1 from "/EdgeGuard.png";
+import em1 from "/EventMesh.png"
 import { CardSwap } from "./svg";
-import { FlipStackShowCase } from "./flipstack";
 
 export type FileType = "image" | "video";
 
@@ -53,7 +50,7 @@ const projects: Project[] = [
   {
     id: "5",
     title: "EdgeGuard",
-    description: "Distributed global Rate Limiter",
+    description: "Built a distributed rate limiter using token bucket + leasing to minimize latency and Redis contention. Uses local caching, Lua-based atomic operations, and Redis cluster sharding to handle ~20k req/sec with stable latency",
     files: [
       { src: eg1, type: "image" },
     ],
@@ -141,13 +138,13 @@ const fadeInUp: Variants = {
     transition: { delay: i * 0.05, duration: 0.4, ease: "easeOut" },
   }),
 };
-const flipStackImages = [
-  { src: sarimgpt1, alt: "Sarim  GPT" },
-  { src: kgpt1, alt: "Kanoon GPT" },
-  { src: tubespace2, alt: "Tubespace" },
-  { src: woos1, alt: "Winter of Open Source" },
-  { src: midfruits1, alt: "MidFruits" },
-]
+// const flipStackImages = [
+//   { src: sarimgpt1, alt: "Sarim  GPT" },
+//   { src: kgpt1, alt: "Kanoon GPT" },
+//   { src: tubespace2, alt: "Tubespace" },
+//   { src: woos1, alt: "Winter of Open Source" },
+//   { src: midfruits1, alt: "MidFruits" },
+// ]
 
 export const SelectedProjects: React.FC = () => {
   return (
@@ -173,7 +170,7 @@ export const SelectedProjects: React.FC = () => {
             variants={fadeInUp}
           >
             <div className="flex sm:hidden flex-col gap-4 justify-center items-center">
-              <p className="text-purple-500 dark:text-purple-400">
+              <p className="text-orange-500 dark:text-orange-400">
                 You can swipe through my projects
               </p>
               <CardSwap />

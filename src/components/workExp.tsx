@@ -1,4 +1,3 @@
-import { Building } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import photogpt from "/photogpt.png";
 
@@ -68,11 +67,11 @@ export function WorkExp() {
                 <div className="mb-4 relative">
                   <div className="flex items-center gap-2 mb-2 relative z-10">
                     <h4 className="text-sm sm:text-base font-medium text-foreground/80">
-                      Frontend Engineer
+                      SDE Intern
                     </h4>
                   </div>
                   <p className="text-sm text-foreground/70">
-                    August 2025 - Current • Remote • Internship
+                    August 2025 - April 2026 • Remote • Internship
                   </p>
                 </div>
               </div>
@@ -82,49 +81,6 @@ export function WorkExp() {
             <motion.svg
               variants={fadeInUp}
               custom={2}
-              className="absolute left-6 top-12 w-16 h-8 pointer-events-none z-0"
-              viewBox="0 0 64 32"
-            >
-              <path
-                d="M 6 0 Q 6 16 32 20"
-                stroke="#22c55e"
-                strokeWidth="2.5"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </motion.svg>
-          </motion.div>
-
-          {/* NewsNest */}
-          <motion.div
-            variants={fadeInUp}
-            custom={3}
-            className="mb-8 relative"
-          >
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center flex-shrink-0 relative z-10">
-                <Building />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-1 relative z-10">
-                  <h3 className="text-lg font-semibold text-foreground/90">
-                    NewsNest
-                  </h3>
-                </div>
-                <div className="flex items-center gap-2 mb-2 relative z-10">
-                  <h4 className="text-base font-medium text-foreground/80">
-                    Founding Backend Engineer
-                  </h4>
-                </div>
-                <p className="text-sm text-foreground/70">
-                  May 2025 - August 2025 (3 m) • Remote • Internship
-                </p>
-              </div>
-            </div>
-
-            <motion.svg
-              variants={fadeInUp}
-              custom={4}
               className="absolute left-6 top-12 w-16 h-8 pointer-events-none z-0"
               viewBox="0 0 64 32"
             >

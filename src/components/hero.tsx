@@ -37,7 +37,7 @@ export const Hero = () => {
         variants={fadeInUp}
         custom={0}
       >
-        <div className="w-10 rounded overflow-hidden">
+        <div className="w-14 rounded overflow-hidden">
           <img
             src={faviconHighQ}
             alt="midsane"
@@ -45,7 +45,10 @@ export const Hero = () => {
             onLoad={() => setLoaded(true)}
           />
         </div>
-        <p className="font-medium">midsane</p>
+        <div className="flex flex-col">
+          <p className="font-bold capitalize">Aditya Raj</p>
+          <p className="font-medium text-base oragne-200">midsane</p>
+        </div>
       </motion.div>
 
       <br />
@@ -58,11 +61,21 @@ export const Hero = () => {
         variants={fadeInUp}
         custom={1}
       >
-        <h1 className="text-3xl tracking-tighter sm:text-4xl md:text-6xl lg:text-7xl font-semibold 
+        <h1
+          className="text-3xl tracking-tighter sm:text-4xl md:text-6xl lg:text-7xl font-semibold 
   leading-snug sm:leading-tight 
-  mb-10 sm:mb-12 text-foreground">
+  mb-10 sm:mb-12 text-foreground"
+        >
           I Create Websites <br />
-          End To End <br />
+          <span
+            className="
+     bg-gradient-to-r from-orange-500 to-amber-500
+      bg-clip-text 
+      text-transparent
+    "
+          > End To End </span>
+          <br />
+
           Full Stack + GenAI
         </h1>
 
