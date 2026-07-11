@@ -31,23 +31,25 @@ export const Hero = () => {
 
       {/* Avatar + name */}
       <motion.div
-        className="flex gap-4 justify-center items-end"
+        className="flex gap-3 justify-center flex-col items-center z-10"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
         custom={0}
       >
-        <div className="w-14 rounded overflow-hidden">
+        <div className="w-14 h-14 rounded-xl overflow-hidden border border-border bg-card p-1 shadow-sm">
           <img
             src={faviconHighQ}
             alt="midsane"
-            className={` ${loaded ? "blur-0" : "blur-sm animate-pulse"}`}
+            className={`w-full h-full object-cover rounded-lg transition-all duration-500 ${loaded ? "blur-0" : "blur-sm animate-pulse"}`}
             onLoad={() => setLoaded(true)}
           />
         </div>
         <div className="flex flex-col">
-          <p className="font-bold capitalize">Aditya Raj</p>
-          <p className="font-medium text-base oragne-200">midsane</p>
+          {/* Using your custom mono font to frame your developer tag */}
+          <p className="font-mono text-xs text-orange-500 tracking-widest bg-orange-500/5 px-2 py-0.5 rounded border border-orange-500/10">
+            ~/aditya-raj
+          </p>
         </div>
       </motion.div>
 
@@ -61,6 +63,24 @@ export const Hero = () => {
         variants={fadeInUp}
         custom={1}
       >
+        {/* Add these inside your relative z-10 max-w-4xl container */}
+        <motion.div
+          drag
+          dragConstraints={{ top: -50, left: -50, right: 50, bottom: 50 }}
+          className="hidden md:flex absolute -top-12 -left-20 cursor-grab active:cursor-grabbing 
+  bg-orange-500/10 text-orange-500 border border-orange-500/30 text-xs px-2 py-1 rounded-md rotate-[-6deg] select-none font-mono"
+        >
+          ✨ Next.js 15
+        </motion.div>
+
+        <motion.div
+          drag
+          dragConstraints={{ top: -50, left: -50, right: 50, bottom: 50 }}
+          className="hidden md:flex absolute top-40 -right-24 cursor-grab active:cursor-grabbing 
+  bg-amber-500/10 text-amber-500 border border-amber-500/30 text-xs px-2 py-1 rounded-md rotate-[12deg] select-none font-mono"
+        >
+          🤖 LLM Orchestration
+        </motion.div>
         <h1
           className="text-3xl tracking-tighter sm:text-4xl md:text-6xl lg:text-7xl font-semibold 
   leading-snug sm:leading-tight 

@@ -1,13 +1,13 @@
 import ThemeToggleButton from "./ui/theme-toggle-button";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { githubImg, linkedinImg, twitterImg, favcionImg, mediumImg } from "@/constant";
+import { githubImg, linkedinImg, twitterImg, favcionImg, leetcodeImg } from "@/constant";
 
 export const Navigation = () => {
   const [showComet, setShowComet] = useState(true);
 
   useEffect(() => {
-    
+
     const timer = setTimeout(() => setShowComet(false), 2500);
     return () => clearTimeout(timer);
   }, []);
@@ -56,8 +56,8 @@ export const Navigation = () => {
       <a target="_blank" href="https://x.com/no_more_mid">
         <img src={twitterImg} alt="Twitter" className="w-7 h-7 cursor-pointer" />
       </a>
-      <a target="_blank" href="https://medium.com/@adityaraj10544">
-        <img src={mediumImg} alt="Medium" className="w-7 h-7 cursor-pointer" />
+      <a target="_blank" href="https://leetcode.com/u/midsane/">
+        <img src={leetcodeImg} alt="LeetCode" className="w-6 h-6 cursor-pointer" />
       </a>
 
       {/* Theme toggle */}
