@@ -2,6 +2,11 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+// Import regular and bold weights
+import "@fontsource/jetbrains-mono/400.css"; 
+import "@fontsource/jetbrains-mono/700.css";
+// If you want italics as well:
+import "@fontsource/jetbrains-mono/400-italic.css";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
