@@ -130,6 +130,8 @@ const projects: Project[] = [
     techStack: ["Next.js", "Firebase"],
   }
 ];
+
+
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number = 0) => ({
@@ -138,24 +140,10 @@ const fadeInUp: Variants = {
     transition: { delay: i * 0.05, duration: 0.4, ease: "easeOut" },
   }),
 };
-// const flipStackImages = [
-//   { src: sarimgpt1, alt: "Sarim  GPT" },
-//   { src: kgpt1, alt: "Kanoon GPT" },
-//   { src: tubespace2, alt: "Tubespace" },
-//   { src: woos1, alt: "Winter of Open Source" },
-//   { src: midfruits1, alt: "MidFruits" },
-// ]
 
 export const SelectedProjects: React.FC = () => {
   return (
     <div id="projects">
-      {/* <FlipStackShowCase
-        header="Selected Projects"
-        subHeader=""
-        desc="A showcase of my recent work, demonstrating my skills and passion
-                for building impactful applications."
-        images={flipStackImages}
-      /> */}
       <section
 
         className="w-full py-12 md:pb-24 md:pt-12 lg:pb-32 bg-background"

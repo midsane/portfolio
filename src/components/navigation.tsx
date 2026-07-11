@@ -1,67 +1,69 @@
 import ThemeToggleButton from "./ui/theme-toggle-button";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { githubImg, linkedinImg, twitterImg, favcionImg, leetcodeImg } from "@/constant";
 
 export const Navigation = () => {
-  const [showComet, setShowComet] = useState(true);
-
-  useEffect(() => {
-
-    const timer = setTimeout(() => setShowComet(false), 2500);
-    return () => clearTimeout(timer);
-  }, []);
+  const socials = [
+    { img: githubImg, url: "https://github.com/midsane", alt: "GitHub" },
+    { img: linkedinImg, url: "https://www.linkedin.com/in/aditya-raj-846018294/", alt: "LinkedIn" },
+    { img: twitterImg, url: "https://x.com/no_more_mid", alt: "Twitter" },
+    { img: leetcodeImg, url: "https://leetcode.com/u/midsane/", alt: "LeetCode", isSmall: true },
+  ];
 
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="flex items-center  shadow shadow-accent gap-2 sm:gap-4 top-4 sm:top-5 left-1/2 -translate-x-1/2 right-0 z-50 p-1 sm:p-2
-        min-w-[400px]:w-[75%] w-[90%] justify-center sm:w-fit border border-border rounded-full bg-background backdrop-blur-sm relative overflow-hidden"
-    >
-      {/* Comet gradient overlay */}
-      {showComet && (
-        <motion.div
-          className="absolute -inset-10 pointer-events-none"
-          initial={{ rotate: 0, opacity: 1 }}
-          animate={{ rotate: 360, opacity: 0 }}
-          transition={{ duration: 2.5, ease: "easeInOut" }}
-          style={{
-            background: `radial-gradient(circle at 30% 30%, rgba(255,0,128,0.5), rgba(0,200,255,0.3), transparent 70%)`,
-            borderRadius: "9999px",
-            filter: "blur(40px)",
-          }}
-        />
-      )}
+    <div className="fixed top-5 left-0 right-0 z-50 px-3 flex justify-center pointer-events-none">
+      <motion.nav
+        initial={{ opacity: 0, y: -15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="pointer-events-auto flex items-center justify-center gap-3 sm:gap-5 px-3 py-2 sm:px-4 w-fit border border-border/60 rounded-full bg-background/80 backdrop-blur-md shadow-sm"
+      >
+        {/* Profile Identity Fragment */}
+        <a className="flex items-center gap-1.5 group font-mono text-xs tracking-tight text-foreground/90" href="/">
+          <div className="w-6 h-6 rounded-full overflow-hidden border border-border/80 bg-muted flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+            <img
+              src={favcionImg}
+              alt="portfolio root"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <span className="font-medium hidden min-[360px]:inline transition-colors duration-300 group-hover:text-orange-500">
+            midsane
+          </span>
+        </a>
 
-      {/* Branding */}
-      <a className="flex gap-2 items-end" href="/">
-        <img
-          src={favcionImg}
-          alt="aditya_raj_portfolio"
-          className="w-7 h-7 cursor-pointer rounded-full"
-        />
-        midsane
-        <div className="h-7 w-[1px] bg-chart-4" />
-      </a>
+        {/* Hairline Divider */}
+        <div className="h-4 w-[1px] bg-border/80 flex-shrink-0" />
 
-      {/* Socials */}
-      <a target="_blank" href="https://github.com/midsane">
-        <img src={githubImg} alt="GitHub" className="w-7 h-7 cursor-pointer" />
-      </a>
-      <a target="_blank" href="https://www.linkedin.com/in/aditya-raj-846018294/">
-        <img src={linkedinImg} alt="LinkedIn" className="w-7 h-7 cursor-pointer" />
-      </a>
-      <a target="_blank" href="https://x.com/no_more_mid">
-        <img src={twitterImg} alt="Twitter" className="w-7 h-7 cursor-pointer" />
-      </a>
-      <a target="_blank" href="https://leetcode.com/u/midsane/">
-        <img src={leetcodeImg} alt="LeetCode" className="w-6 h-6 cursor-pointer" />
-      </a>
+        {/* Action Link Row */}
+        <div className="flex items-center gap-3 sm:gap-4.5 flex-shrink-0">
+          {socials.map((social, index) => (
+            <a 
+              key={index}
+              target="_blank" 
+              rel="noopener noreferrer" 
+              href={social.url}
+              className="group relative flex items-center justify-center flex-shrink-0"
+            >
+              <img 
+                src={social.img} 
+                alt={social.alt} 
+                className={`${
+                  social.isSmall ? "w-5 h-5 min-w-5 min-h-5" : "w-[22px] h-[22px] min-w-[22px] min-h-[22px]"
+                } object-contain transition-all duration-300 hover:-translate-y-0.5`} 
+              />
+            </a>
+          ))}
+        </div>
 
-      {/* Theme toggle */}
-      <ThemeToggleButton />
-    </motion.nav>
+        {/* Hairline Divider */}
+        <div className="h-4 w-[1px] bg-border/80 flex-shrink-0" />
+
+        {/* Configuration Action */}
+        <div className="flex items-center justify-center scale-90 hover:scale-95 transition-transform duration-200 flex-shrink-0">
+          <ThemeToggleButton />
+        </div>
+      </motion.nav>
+    </div>
   );
 };
