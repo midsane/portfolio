@@ -25,9 +25,9 @@ export const Footer = () => {
     <section className="w-full mt-20 overflow-x-hidden p-0 m-0">
       <div className="mx-auto max-w-4xl rounded-[40px] p-2 shadow-sm">
         <div className="relative mx-auto h-[400px] max-w-4xl overflow-hidden rounded-[38px] bg-accent p-2 shadow-sm">
-          <p className="mt-20 text-center font-semibold text-accent-foreground underline">
+          <div className="mt-20 text-center font-semibold text-accent-foreground underline">
             Making Web Dev Great Again!
-          </p>
+          </div>
 
           <div className="flex justify-center w-full">
             <div
