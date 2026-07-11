@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 
 export const LandingPage = () => {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
+    <div className="relative isolate min-h-screen w-full overflow-hidden">
       {/* Animated gradient background */}
       <motion.div
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 z-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}

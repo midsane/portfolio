@@ -21,7 +21,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-between pt-[18vh] pb-8 sm:pt-[20vh] px-4 md:px-6 relative text-center overflow-hidden bg-background">
+    <section className="min-h-screen flex flex-col items-center justify-between pt-[18vh] pb-8 sm:pt-[20vh] px-4 md:px-6 relative z-10 text-center overflow-hidden">
 
       {/* Background gradient structure */}
       <div className="absolute inset-0 opacity-70 pointer-events-none" />
