@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React from "react";
 import { Github, ExternalLink } from "lucide-react";
 import {
   Card,
@@ -186,11 +186,11 @@ export const SelectedProjects: React.FC = () => {
                           <CarouselItem key={imgIndex}>
                             <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-muted relative">
                               {file.type === "image" ? (
-                                <BlurImage
+                                <ProjectImage
                                   src={file.src}
                                   alt={`${project.title} - ${imgIndex + 1}`}
-                                  loading={index === 0 && imgIndex === 0 ? "eager" : "lazy"}
-                                  fetchPriority={index === 0 && imgIndex === 0 ? "high" : "auto"}
+                                  loading="lazy"
+                                  fetchPriority="auto"
                                 />
                               ) : (
                                 <video
@@ -199,7 +199,7 @@ export const SelectedProjects: React.FC = () => {
                                   muted
                                   controls
                                   preload="none"
-                                  poster={sarimgpt1}
+                                  poster="/projects/sarimgpt1-480.webp"
                                 >
                                   <source src={file.src} type="video/mp4" />
                                   <track
@@ -285,25 +285,22 @@ export const SelectedProjects: React.FC = () => {
   );
 };
 
-const BlurImage: React.FC<{
+const ProjectImage: React.FC<{
   src: string;
   alt: string;
   loading: "eager" | "lazy";
   fetchPriority: "high" | "auto";
-}> = ({ src, alt, loading, fetchPriority }) => {
-  const [loaded, setLoaded] = useState(false);
-  return (
+}> = ({ src, alt, loading, fetchPriority }) => (
     <img
       src={src}
+      srcSet={`/projects/${src.split("/").pop()?.replace(".webp", "-480.webp")} 480w, ${src} 1280w`}
+      sizes="(min-width: 1024px) 690px, calc(100vw - 32px)"
       alt={alt}
       width={1280}
       height={720}
       loading={loading}
       fetchPriority={fetchPriority}
       decoding="async"
-      onLoad={() => setLoaded(true)}
-      className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${loaded ? "blur-0" : "blur-sm animate-pulse"
-        }`}
+      className="w-full h-full object-cover"
     />
-  );
-};
+);

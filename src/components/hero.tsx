@@ -1,12 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import { ResumeButton } from "./fdownloadButton";
 import { motion, type Variants } from "framer-motion";
 import { faviconHighQ } from "@/constant";
 
 export const Hero = () => {
-  const [loaded, setLoaded] = useState(false);
-
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 15 },
     visible: (i: number = 0) => ({
@@ -41,8 +38,8 @@ export const Hero = () => {
             <img
               src={faviconHighQ}
               alt="midsane"
-              className={`w-full h-full object-cover rounded-xl transition-all duration-500 ${loaded ? "blur-0" : "blur-sm animate-pulse"}`}
-              onLoad={() => setLoaded(true)}
+              className="w-full h-full object-cover rounded-xl"
+              decoding="async"
             />
           </div>
 
@@ -100,7 +97,7 @@ export const Hero = () => {
                   behavior: "smooth",
                 })
               }
-              className="transition-all cursor-pointer duration-300 px-6 py-2 sm:px-8 sm:py-3 rounded-full text-xs sm:text-sm font-mono border-border/80 hover:border-orange-500/40"
+              className="transition-colors cursor-pointer duration-300 px-6 py-2 sm:px-8 sm:py-3 rounded-full text-xs sm:text-sm font-mono border-border/80 hover:border-orange-500/40"
             >
               view_work.sh
             </Button>

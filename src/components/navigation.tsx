@@ -50,7 +50,7 @@ export const Navigation = () => {
                 alt={social.alt} 
                 className={`${
                   social.isSmall ? "w-5 h-5 min-w-5 min-h-5" : "w-[22px] h-[22px] min-w-[22px] min-h-[22px]"
-                } object-contain transition-all duration-300 hover:-translate-y-0.5`} 
+                } object-contain transition-transform duration-300 hover:-translate-y-0.5`}
               />
             </a>
           ))}

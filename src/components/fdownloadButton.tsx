@@ -33,9 +33,9 @@ export function ResumeButton({
           </span>
           <div className="relative w-4 h-4 flex items-center justify-center">
             {hovered ? (
-              <FileText className="w-4 h-4 text-orange-500 absolute transition-all duration-300" strokeWidth={2} />
+              <FileText className="w-4 h-4 text-orange-500 absolute" strokeWidth={2} />
             ) : (
-              <Download className="w-4 h-4 text-muted-foreground group-hover:text-orange-500 absolute transition-all duration-300 animate-pulse" strokeWidth={2.5} />
+              <Download className="w-4 h-4 text-muted-foreground group-hover:text-orange-500 absolute transition-colors duration-300" strokeWidth={2.5} />
             )}
           </div>
         </div>

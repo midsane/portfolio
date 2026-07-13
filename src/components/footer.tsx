@@ -46,7 +46,7 @@ export const Footer = () => {
               whileInView="visible"
               viewport={{ once: true }}
               custom={index * 0.1}
-              className="w-5 h-5 sm:w-6 sm:h-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:-translate-y-0.5"
+              className="w-5 h-5 sm:w-6 sm:h-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-opacity duration-300 hover:-translate-y-0.5"
             >
               <img src={social.img} alt={social.alt} className="w-full h-full object-contain" />
             </motion.a>
