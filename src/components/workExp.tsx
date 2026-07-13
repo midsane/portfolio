@@ -30,7 +30,7 @@ export function WorkExp() {
             <div className="w-2.5 h-2.5 rounded-full bg-orange-400" />
             <div className="w-2.5 h-2.5 rounded-full bg-orange-400" />
           </div>
-          <span className="text-xs font-mono tracking-wider text-muted-foreground/60 uppercase">
+          <span className="text-xs font-mono tracking-wider text-muted-foreground/80 uppercase">
             History.log
           </span>
         </div>

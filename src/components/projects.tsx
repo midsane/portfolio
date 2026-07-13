@@ -20,18 +20,18 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { motion, type Variants } from "framer-motion";
 
-import tubespace1 from "/tubespace1.png";
-import tubespace2 from "/tubespace2.png";
-import midfruits1 from "/midfruits1.png";
-import midfruits2 from "/midfruits2.png";
-import sarimgpt1 from "/sarimgpt1.png";
-import sarimgpt2 from "/sarimgpt2.png";
+import tubespace1 from "/projects/tubespace1.webp";
+import tubespace2 from "/projects/tubespace2.webp";
+import midfruits1 from "/projects/midfruits1.webp";
+import midfruits2 from "/projects/midfruits2.webp";
+import sarimgpt1 from "/projects/sarimgpt1.webp";
+import sarimgpt2 from "/projects/sarimgpt2.webp";
 // import kgpt1 from "/kanoongpt1.png";
 import sarimgptDemoVideo from "/sarimgpt.mp4";
-import woos1 from "/woos1.png"
-import woos2 from "/woos2.png"
-import eg1 from "/EdgeGuard.png";
-import em1 from "/EventMesh.png"
+import woos1 from "/projects/woos1.webp"
+import woos2 from "/projects/woos2.webp"
+import eg1 from "/projects/EdgeGuard.webp";
+import em1 from "/projects/EventMesh.webp"
 import { CardSwap } from "./svg";
 
 export type FileType = "image" | "video";
@@ -189,16 +189,26 @@ export const SelectedProjects: React.FC = () => {
                                 <BlurImage
                                   src={file.src}
                                   alt={`${project.title} - ${imgIndex + 1}`}
+                                  loading={index === 0 && imgIndex === 0 ? "eager" : "lazy"}
+                                  fetchPriority={index === 0 && imgIndex === 0 ? "high" : "auto"}
                                 />
                               ) : (
                                 <video
                                   className="w-full h-full object-cover"
-                                  autoPlay
                                   loop
                                   muted
                                   controls
+                                  preload="none"
+                                  poster={sarimgpt1}
                                 >
                                   <source src={file.src} type="video/mp4" />
+                                  <track
+                                    kind="captions"
+                                    src="/sarimgpt-captions.vtt"
+                                    srcLang="en"
+                                    label="English"
+                                    default
+                                  />
                                   Your browser does not support the video tag.
                                 </video>
                               )}
@@ -275,12 +285,22 @@ export const SelectedProjects: React.FC = () => {
   );
 };
 
-const BlurImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
+const BlurImage: React.FC<{
+  src: string;
+  alt: string;
+  loading: "eager" | "lazy";
+  fetchPriority: "high" | "auto";
+}> = ({ src, alt, loading, fetchPriority }) => {
   const [loaded, setLoaded] = useState(false);
   return (
     <img
       src={src}
       alt={alt}
+      width={1280}
+      height={720}
+      loading={loading}
+      fetchPriority={fetchPriority}
+      decoding="async"
       onLoad={() => setLoaded(true)}
       className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${loaded ? "blur-0" : "blur-sm animate-pulse"
         }`}

@@ -123,7 +123,7 @@ export const Hero = () => {
             <div className="w-1 h-1 rounded-full bg-orange-500/60 absolute top-0" />
           </div>
 
-          <p className="text-muted-foreground/40 font-mono text-[12px] tracking-widest uppercase mb-2 bg-background px-2 z-20">
+          <p className="text-foreground/80 font-mono text-[12px] tracking-widest uppercase mb-2 bg-background px-2 z-20">
             scroll.down
           </p>
         </motion.div>
@@ -137,7 +137,7 @@ export const Hero = () => {
         variants={fadeInUp}
         custom={3}
       >
-        <p className="text-muted-foreground/40 font-mono text-[12px] sm:text-xs tracking-wider">@no_more_mid</p>
+        <p className="text-foreground/70 font-mono text-[12px] sm:text-xs tracking-wider">@no_more_mid</p>
       </motion.div>
     </section>
   );

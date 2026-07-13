@@ -69,7 +69,9 @@ export const Footer = () => {
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="w-[85%] h-[85%] object-cover rounded-t-full object-top filter contrast-[1.02] dark:brightness-90 transition-transform duration-500 group-hover:scale-105"
             src={patternImg}
-            alt="Profile avatar"
+            alt=""
+            loading="lazy"
+            decoding="async"
           />
         </div>
 
