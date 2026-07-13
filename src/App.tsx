@@ -1,5 +1,6 @@
 import { Footer } from "./components/footer"
 import { LandingPage } from "./components/landingpage"
+import { Navigation } from "./components/navigation"
 import { SelectedProjects } from "./components/projects"
 import { ThemeProvider } from "./components/ui/theme-provider"
 import { WorkExp } from "./components/workExp"
@@ -15,6 +16,7 @@ function App() {
       <SelectedProjects />
       <WorkExp />
       <Footer />
+      <Navigation />
     </ThemeProvider>
   )
 }

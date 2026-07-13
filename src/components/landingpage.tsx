@@ -1,4 +1,3 @@
-import { Navigation } from "./navigation";
 import { Hero } from "./hero";
 import { motion } from "framer-motion";
 
@@ -18,7 +17,6 @@ export const LandingPage = () => {
         }}
       />
 
-      <Navigation />
       <Hero />
     </div>
   );
