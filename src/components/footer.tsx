@@ -1,8 +1,8 @@
 import { motion, type Variants } from "framer-motion";
-import { githubImg, gmailImg, linkedinImg, patternImg, twitterImg } from "@/constant";
+import { SectionLabel } from "@/components/ui/kit";
+import { githubImg, gmailImg, linkedinImg, twitterImg } from "@/constant";
 
 export const Footer = () => {
-
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 15 },
     visible: (custom: number = 0) => ({
@@ -20,62 +20,67 @@ export const Footer = () => {
   ];
 
   return (
-    <section className="w-full mt-24 px-4 sm:px-6">
-      <div className="mx-auto max-w-4xl border border-border/60 bg-background rounded-t-[40px] shadow-sm overflow-hidden relative flex flex-col items-center pt-16 sm:pt-20">
-        
-        {/* Minimal Typography */}
-        <div className="text-center space-y-3 px-4 z-10">
-          <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground/80 font-medium">
-            Let's build something real
-          </p>
-          <h2 className="text-xl sm:text-2xl font-normal text-foreground tracking-tight">
-            Making Web Dev Great Again
-          </h2>
-        </div>
+    <footer className="relative w-full overflow-hidden px-4 pt-20 sm:px-6 sm:pt-28">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
+        className="mx-auto max-w-5xl"
+      >
+        <motion.div variants={fadeInUp} custom={0}>
+          <SectionLabel>Contact</SectionLabel>
+        </motion.div>
 
-        {/* Minimal Social Dock */}
-        <div className="flex items-center gap-6 sm:gap-8 mt-10 z-10">
+        <motion.h2
+          variants={fadeInUp}
+          custom={0.05}
+          className="mt-4 max-w-xl font-mono text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-3xl"
+        >
+          Let&apos;s build something real.
+        </motion.h2>
+
+        <motion.a
+          variants={fadeInUp}
+          custom={0.1}
+          href="mailto:adityaraj10544@gmail.com"
+          className="mt-6 inline-block font-mono text-sm text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground"
+        >
+          adityaraj10544@gmail.com
+        </motion.a>
+
+        <motion.div
+          variants={fadeInUp}
+          custom={0.15}
+          className="mt-8 flex items-center gap-5"
+        >
           {socials.map((social, index) => (
-            <motion.a
+            <a
               key={index}
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={index * 0.1}
-              className="w-5 h-5 sm:w-6 sm:h-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-opacity duration-300 hover:-translate-y-0.5"
+              aria-label={social.alt}
+              className="opacity-55 grayscale transition-all duration-200 hover:-translate-y-0.5 hover:opacity-100 hover:grayscale-0"
             >
-              <img src={social.img} alt={social.alt} className="w-full h-full object-contain" />
-            </motion.a>
+              <img
+                src={social.img}
+                alt={social.alt}
+                className="h-[18px] w-[18px] object-contain"
+              />
+            </a>
           ))}
-        </div>
+        </motion.div>
+      </motion.div>
 
-        {/* Text Link Anchor */}
-        <a 
-          href="mailto:adityaraj10544@gmail.com" 
-          className="mt-6 text-xs text-muted-foreground/80 hover:text-foreground transition-colors duration-300 z-10 font-mono tracking-tight"
-        >
-          adityaraj10544@gmail.com
-        </a>
-
-        {/* Semicircle Anchor Component at the bottom */}
-        <div className="relative w-48 h-24 sm:w-56 sm:h-28 mt-12 bg-accent/40 dark:bg-accent/20 border-t border-x border-border rounded-t-full flex items-end justify-center overflow-hidden group">
-          <motion.img
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="w-[85%] h-[85%] object-cover rounded-t-full object-top filter contrast-[1.02] dark:brightness-90 transition-transform duration-500 group-hover:scale-105"
-            src={patternImg}
-            alt=""
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-
+      {/* Oversized wordmark */}
+      <div
+        aria-hidden
+        className="pointer-events-none mx-auto mt-16 max-w-5xl select-none overflow-hidden"
+      >
+        <span className="block translate-y-[0.15em] font-mono text-[18vw] font-semibold leading-none tracking-tighter text-foreground/[0.045] lg:text-[13rem]">
+          midsane
+        </span>
       </div>
-    </section>
+    </footer>
   );
 };

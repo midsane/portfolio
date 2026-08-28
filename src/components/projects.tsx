@@ -2,22 +2,13 @@
 import React from "react";
 import { Github, ExternalLink } from "lucide-react";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { SectionLabel } from "@/components/ui/kit";
 import { motion, type Variants } from "framer-motion";
 
 import tubespace1 from "/projects/tubespace1.webp";
@@ -32,7 +23,6 @@ import woos1 from "/projects/woos1.webp"
 import woos2 from "/projects/woos2.webp"
 import eg1 from "/projects/EdgeGuard.webp";
 import em1 from "/projects/EventMesh.webp"
-import { CardSwap } from "./svg";
 
 export type FileType = "image" | "video";
 
@@ -48,6 +38,29 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: "7",
+    title: "MetaGraph-MCP",
+    description: "MetaGraph-MCP is a live metadata platform that automatically syncs a governed catalog with a business database. It uses event-driven schema tracking, AST-based SQL lineage, and an LLM-powered Scribe Agent for idempotent business descriptions and PII tagging. The resulting schema, lineage, and PII metadata is accessible via REST APIs and native MCP",
+    files: [
+      { src: "https://www.loom.com/embed/40be560d55b249ee9c8d15680db677eb", type: "video" },
+      { src: "https://www.loom.com/embed/7cac8fbb58d340d49cf36fbcba50db02", type: "video" }
+    ],
+    githubLink: "https://github.com/midsane/MetaGraph-MCP",
+    liveSiteLink: "https://github.com/midsane/MetaGraph-MCP",
+    techStack: ["PostgresDB", "VectorDB-Qdrant", "KnowledgeDB-Neo4j", "Docker", "Typescript"],
+  },
+  {
+    id: "6",
+    title: "Bubble-Tea",
+    description: "AI coding agent harness (TypeScript, Ink TUI) demonstrating harness engineering: multi-provider LLM support, tool registry with MCP integration, plan-act-observe loop, persistent JSONL sessions, sub-agents with background execution, deterministic hook guardrails, and an eval/repair loop.",
+    files: [
+      { src: "https://www.loom.com/embed/0eb88af91a104a16b326ddaa61f4e38f", type: "video" },
+    ],
+    githubLink: "https://github.com/midsane/bubble-tea",
+    liveSiteLink: "https://github.com/midsane/bubble-tea",
+    techStack: ["TS", "React-INK", "MCP"],
+  },
+  {
     id: "5",
     title: "EdgeGuard",
     description: "Built a distributed rate limiter using token bucket + leasing to minimize latency and Redis contention. Uses local caching, Lua-based atomic operations, and Redis cluster sharding to handle ~20k req/sec with stable latency",
@@ -59,7 +72,7 @@ const projects: Project[] = [
     techStack: ["Redis", "AWS", "Docker", "Javascript"],
   },
   {
-    id: "6",
+    id: "8",
     title: "EventMesh",
     description: "EventMesh is a backend system that crawls news from the internet, analyzes each article using LLMs + vector embeddings, and automatically builds timelines of related events.",
     files: [
@@ -143,145 +156,138 @@ const fadeInUp: Variants = {
 
 export const SelectedProjects: React.FC = () => {
   return (
-    <div id="projects">
-      <section
+    <section id="projects" className="w-full px-4 py-20 sm:px-6 sm:py-28">
+      <div className="mx-auto max-w-5xl">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+          variants={fadeInUp}
+        >
+          <SectionLabel>Selected Work</SectionLabel>
+          <h2 className="mt-3 font-mono text-2xl font-medium uppercase tracking-tight text-foreground sm:text-3xl">
+            Projects
+          </h2>
+        </motion.div>
 
-        className="w-full py-12 md:pb-24 md:pt-12 lg:pb-32 bg-background"
-      >
-        <h1 className="px-4 md:px-5 text-center hidden sm:block" >There you have it!</h1>
-        <div className="container px-4 md:px-6 max-w-6xl mx-auto">
-          <motion.div
-            className="flex flex-col items-center justify-center space-y-4 text-center mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-          >
-            <div className="flex sm:hidden flex-col gap-4 justify-center items-center">
-              <p className="text-orange-500 dark:text-orange-400">
-                You can swipe through my projects
-              </p>
-              <CardSwap />
-            </div>
-          </motion.div>
+        <div className="mt-12 sm:mt-16">
+          {projects.map((project, index) => (
+            <motion.article
+              key={project.title}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+              className="flex flex-col gap-6 border-t border-border/60 py-10 sm:py-14 lg:flex-row lg:gap-12"
+            >
+              {/* Media */}
+              <div className="w-full lg:w-[56%]">
+                <Carousel className="w-full">
+                  <CarouselContent>
+                    {project.files.map((file, imgIndex) => (
+                      <CarouselItem key={imgIndex}>
+                        <div className="relative aspect-[16/9] w-full overflow-hidden border border-border/60 bg-muted">
+                          {file.type === "image" ? (
+                            <ProjectImage
+                              src={file.src}
+                              alt={`${project.title} - ${imgIndex + 1}`}
+                              loading="lazy"
+                              fetchPriority="auto"
+                            />
+                          ) : file.src.includes("loom.com") ? (
+                            <iframe
+                              className="h-full w-full"
+                              src={file.src}
+                              title={`${project.title} - ${imgIndex + 1}`}
+                              allow="fullscreen"
+                              allowFullScreen
+                              loading="lazy"
+                            />
+                          ) : (
+                            <video
+                              className="h-full w-full object-cover"
+                              loop
+                              muted
+                              controls
+                              preload="none"
+                              poster="/projects/sarimgpt1-480.webp"
+                            >
+                              <source src={file.src} type="video/mp4" />
+                              <track
+                                kind="captions"
+                                src="/sarimgpt-captions.vtt"
+                                srcLang="en"
+                                label="English"
+                                default
+                              />
+                              Your browser does not support the video tag.
+                            </video>
+                          )}
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  {project.files.length > 1 && (
+                    <>
+                      <CarouselPrevious className="left-3 rounded-none border-border/60 bg-background/80 backdrop-blur" />
+                      <CarouselNext className="right-3 rounded-none border-border/60 bg-background/80 backdrop-blur" />
+                    </>
+                  )}
+                </Carousel>
+              </div>
 
-          {/* Projects */}
-          <div className="flex flex-col gap-2 sm:gap-10 justify-center items-center">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                variants={fadeInUp}
-                custom={index}
-                className="w-full"
-              >
-                <Card className="flex rounded-2xl lg:flex-row gap-0 flex-col justify-center items-center h-full w-full">
-                  {/* Image Carousel */}
-                  <CardContent className="flex justify-center items-center w-full lg:w-[60%]">
-                    <Carousel className="w-full border-none rounded-2xl">
-                      <CarouselContent>
-                        {project.files.map((file, imgIndex) => (
-                          <CarouselItem key={imgIndex}>
-                            <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-muted relative">
-                              {file.type === "image" ? (
-                                <ProjectImage
-                                  src={file.src}
-                                  alt={`${project.title} - ${imgIndex + 1}`}
-                                  loading="lazy"
-                                  fetchPriority="auto"
-                                />
-                              ) : (
-                                <video
-                                  className="w-full h-full object-cover"
-                                  loop
-                                  muted
-                                  controls
-                                  preload="none"
-                                  poster="/projects/sarimgpt1-480.webp"
-                                >
-                                  <source src={file.src} type="video/mp4" />
-                                  <track
-                                    kind="captions"
-                                    src="/sarimgpt-captions.vtt"
-                                    srcLang="en"
-                                    label="English"
-                                    default
-                                  />
-                                  Your browser does not support the video tag.
-                                </video>
-                              )}
-                            </div>
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                      <CarouselPrevious className="ml-2" />
-                      <CarouselNext className="mr-2" />
-                    </Carousel>
-                  </CardContent>
+              {/* Detail */}
+              <div className="flex w-full flex-col lg:w-[44%]">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-xs text-muted-foreground/70">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-mono text-lg font-medium uppercase tracking-tight text-foreground">
+                    {project.title}
+                  </h3>
+                </div>
 
-                  {/* Description */}
-                  <div className="flex flex-col gap-2 w-full lg:w-[40%]">
-                    <CardHeader className="p-6 pb-4">
-                      <CardTitle className="text-2xl font-bold">
-                        {project.title}
-                      </CardTitle>
-                      <CardDescription className="text-base text-muted-foreground mt-2">
-                        {project.description}
-                      </CardDescription>
-                    </CardHeader>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  {project.description}
+                </p>
 
-                    <CardContent className="p-6 pt-0 flex flex-col flex-grow">
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.techStack.map((tech, techIndex) => (
-                          <Badge
-                            key={techIndex}
-                            variant="secondary"
-                            className="px-3 py-1 rounded-full"
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
+                <div className="mt-6 flex flex-wrap gap-1.5">
+                  {project.techStack.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="border border-border/60 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
 
-                      <div className="flex gap-2 mt-auto">
-                        <Button asChild variant="outline">
-                          <a
-                            href={project.githubLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Github className="mr-2 h-4 w-4" />
-                            GitHub
-                          </a>
-                        </Button>
-                        <Button asChild>
-                          <a
-                            href={project.liveSiteLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ExternalLink className="mr-2 h-4 w-4" />
-                            Live Site
-                          </a>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </div>
-                </Card>
-
-                {index < projects.length - 1 && (
-                  <div className="col-span-full flex justify-center items-center py-4 md:hidden">
-                    <Separator className="w-1/2" />
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </div>
+                <div className="mt-7 flex gap-2">
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 border border-border/70 px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground"
+                  >
+                    <Github className="h-3.5 w-3.5" />
+                    Code
+                  </a>
+                  <a
+                    href={project.liveSiteLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 bg-foreground px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-background transition-opacity hover:opacity-90"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    Live
+                  </a>
+                </div>
+              </div>
+            </motion.article>
+          ))}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
@@ -291,16 +297,16 @@ const ProjectImage: React.FC<{
   loading: "eager" | "lazy";
   fetchPriority: "high" | "auto";
 }> = ({ src, alt, loading, fetchPriority }) => (
-    <img
-      src={src}
-      srcSet={`/projects/${src.split("/").pop()?.replace(".webp", "-480.webp")} 480w, ${src} 1280w`}
-      sizes="(min-width: 1024px) 690px, calc(100vw - 32px)"
-      alt={alt}
-      width={1280}
-      height={720}
-      loading={loading}
-      fetchPriority={fetchPriority}
-      decoding="async"
-      className="w-full h-full object-cover"
-    />
+  <img
+    src={src}
+    srcSet={`/projects/${src.split("/").pop()?.replace(".webp", "-480.webp")} 480w, ${src} 1280w`}
+    sizes="(min-width: 1024px) 690px, calc(100vw - 32px)"
+    alt={alt}
+    width={1280}
+    height={720}
+    loading={loading}
+    fetchPriority={fetchPriority}
+    decoding="async"
+    className="w-full h-full object-cover"
+  />
 );

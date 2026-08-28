@@ -1,69 +1,56 @@
 import ThemeToggleButton from "./ui/theme-toggle-button";
 import { motion } from "framer-motion";
-import { githubImg, linkedinImg, twitterImg, favcionImg, leetcodeImg } from "@/constant";
+import { githubImg, linkedinImg, twitterImg, leetcodeImg } from "@/constant";
 
 export const Navigation = () => {
   const socials = [
     { img: githubImg, url: "https://github.com/midsane", alt: "GitHub" },
     { img: linkedinImg, url: "https://www.linkedin.com/in/aditya-raj-846018294/", alt: "LinkedIn" },
     { img: twitterImg, url: "https://x.com/no_more_mid", alt: "Twitter" },
-    { img: leetcodeImg, url: "https://leetcode.com/u/midsane/", alt: "LeetCode", isSmall: true },
+    { img: leetcodeImg, url: "https://leetcode.com/u/midsane/", alt: "LeetCode" },
   ];
 
   return (
-    <div className="fixed top-5 left-0 right-0 z-50 px-3 flex justify-center pointer-events-none">
-      <motion.nav
-        initial={{ opacity: 0, y: -15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="pointer-events-auto flex items-center justify-center gap-3 sm:gap-5 px-3 py-2 sm:px-4 w-fit border border-border/60 rounded-full bg-background/80 backdrop-blur-md shadow-sm"
-      >
-        {/* Profile Identity Fragment */}
-        <a className="flex items-center gap-1.5 group font-mono text-xs tracking-tight text-foreground/90" href="/">
-          <div className="w-6 h-6 rounded-full overflow-hidden border border-border/80 bg-muted flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
-            <img
-              src={favcionImg}
-              alt="portfolio root"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <span className="font-medium hidden min-[360px]:inline transition-colors duration-300 group-hover:text-orange-500">
-            midsane
-          </span>
+    <motion.header
+      initial={{ opacity: 0, y: -12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed top-0 inset-x-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-md"
+    >
+      <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
+        {/* Wordmark */}
+        <a
+          href="/"
+          className="group flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-foreground/90 transition-colors hover:text-foreground"
+        >
+          <span className="inline-block h-1.5 w-1.5 bg-orange-500" />
+          midsane
         </a>
 
-        {/* Hairline Divider */}
-        <div className="h-4 w-[1px] bg-border/80 flex-shrink-0" />
-
-        {/* Action Link Row */}
-        <div className="flex items-center gap-3 sm:gap-4.5 flex-shrink-0">
+        {/* Links + theme toggle */}
+        <div className="flex items-center gap-4 sm:gap-5">
           {socials.map((social, index) => (
-            <a 
+            <a
               key={index}
-              target="_blank" 
-              rel="noopener noreferrer" 
+              target="_blank"
+              rel="noopener noreferrer"
               href={social.url}
-              className="group relative flex items-center justify-center flex-shrink-0"
+              aria-label={social.alt}
+              className="opacity-55 grayscale transition-all duration-200 hover:-translate-y-0.5 hover:opacity-100 hover:grayscale-0"
             >
-              <img 
-                src={social.img} 
-                alt={social.alt} 
-                className={`${
-                  social.isSmall ? "w-5 h-5 min-w-5 min-h-5" : "w-[22px] h-[22px] min-w-[22px] min-h-[22px]"
-                } object-contain transition-transform duration-300 hover:-translate-y-0.5`}
+              <img
+                src={social.img}
+                alt={social.alt}
+                className="h-[18px] w-[18px] object-contain"
               />
             </a>
           ))}
+          <span className="h-4 w-px bg-border/70" />
+          <div className="scale-90">
+            <ThemeToggleButton />
+          </div>
         </div>
-
-        {/* Hairline Divider */}
-        <div className="h-4 w-[1px] bg-border/80 flex-shrink-0" />
-
-        {/* Configuration Action */}
-        <div className="flex items-center justify-center scale-90 hover:scale-95 transition-transform duration-200 flex-shrink-0">
-          <ThemeToggleButton />
-        </div>
-      </motion.nav>
-    </div>
+      </nav>
+    </motion.header>
   );
 };

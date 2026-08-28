@@ -21,25 +21,19 @@ export function ResumeButton({
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setHovered(true)}
       onBlur={() => setHovered(false)}
-      className="select-none active:scale-98 transition-transform inline-block group"
       rel="noopener noreferrer"
+      className="group inline-flex select-none items-center gap-2.5 border border-border/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground"
     >
-      <div className="flex items-center gap-3 font-mono text-sm sm:text-base text-orange-500 tracking-wider bg-orange-500/5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-orange-500/20 shadow-sm transition-colors duration-300 group-hover:border-orange-500/40 group-hover:bg-orange-500/[0.08]">
-        <span>~/aditya-raj</span>
-        <span className="text-muted-foreground/30">|</span>
-        <div className="flex items-center gap-1.5 text-muted-foreground transition-colors duration-300 group-hover:text-orange-500">
-          <span className="text-xs sm:text-sm tracking-normal uppercase text-muted-foreground/80 font-semibold group-hover:text-orange-500">
-            cv
-          </span>
-          <div className="relative w-4 h-4 flex items-center justify-center">
-            {hovered ? (
-              <FileText className="w-4 h-4 text-orange-500 absolute" strokeWidth={2} />
-            ) : (
-              <Download className="w-4 h-4 text-muted-foreground group-hover:text-orange-500 absolute transition-colors duration-300" strokeWidth={2.5} />
-            )}
-          </div>
-        </div>
-      </div>
+      <span>~/aditya-raj</span>
+      <span className="text-border">|</span>
+      <span className="inline-flex items-center gap-1.5">
+        CV
+        {hovered ? (
+          <FileText className="h-3.5 w-3.5" strokeWidth={2} />
+        ) : (
+          <Download className="h-3.5 w-3.5" strokeWidth={2} />
+        )}
+      </span>
     </a>
   );
 }
