@@ -1,4 +1,5 @@
 import { motion, type Variants } from "framer-motion";
+import { SectionLabel } from "@/components/ui/kit";
 import { githubImg, gmailImg, linkedinImg, patternImg, twitterImg } from "@/constant";
 
 export const Footer = () => {
@@ -21,13 +22,11 @@ export const Footer = () => {
 
   return (
     <section className="w-full mt-24 px-4 sm:px-6">
-      <div className="mx-auto max-w-4xl border border-border/60 bg-background rounded-t-[40px] shadow-sm overflow-hidden relative flex flex-col items-center pt-16 sm:pt-20">
+      <div className="mx-auto max-w-4xl border border-border/60 bg-background shadow-sm overflow-hidden relative flex flex-col items-center pt-16 sm:pt-20">
         
         {/* Minimal Typography */}
         <div className="text-center space-y-3 px-4 z-10">
-          <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground/80 font-medium">
-            Let's build something real
-          </p>
+          <SectionLabel>Contact</SectionLabel>
           <h2 className="text-xl sm:text-2xl font-normal text-foreground tracking-tight">
             Making Web Dev Great Again
           </h2>
