@@ -80,7 +80,7 @@ export const Hero = () => {
         custom={4}
         className="mt-7 max-w-md text-sm sm:text-base text-muted-foreground leading-relaxed"
       >
-        Full-stack engineering and applied generative AI — from the data model
+        Full-stack engineering and applied generative AI - from the data model
         to the deployed interface.
       </motion.p>
 

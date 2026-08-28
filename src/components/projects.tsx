@@ -1,6 +1,14 @@
 'use client'
-import React from "react";
-import { Github, ExternalLink } from "lucide-react";
+import React, { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import {
+  Github,
+  ExternalLink,
+  Maximize2,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -9,7 +17,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { SectionLabel } from "@/components/ui/kit";
-import { motion, type Variants } from "framer-motion";
+import { cloudinary, fullResImage, imageSrcSet, isCloudinary } from "@/lib/media";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 
 import tubespace1 from "/projects/tubespace1.webp";
 import tubespace2 from "/projects/tubespace2.webp";
@@ -38,10 +47,24 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: "8",
+    title: "EventMesh",
+    description: "EventMesh is a backend system that crawls news from the internet, analyzes each article using LLMs + vector embeddings, and automatically builds timelines of related events.",
+    files: [
+      { src: "https://res.cloudinary.com/midcloud/image/upload/v1787919419/eventmesh2_s8zmqe.png", type: "image" },
+      { src: "https://res.cloudinary.com/midcloud/image/upload/v1787919418/eventmesh1_iy9v5n.png", type: "image" },
+      { src: em1, type: "image" },
+    ],
+    githubLink: "https://github.com/midsane/EventMesh",
+    liveSiteLink: "https://event-mesh-sigma.vercel.app/",
+    techStack: ["Typescript", "Pinecone", "GenAI", "Cohere AI", "GraphQL"],
+  },
+  {
     id: "7",
     title: "MetaGraph-MCP",
     description: "MetaGraph-MCP is a live metadata platform that automatically syncs a governed catalog with a business database. It uses event-driven schema tracking, AST-based SQL lineage, and an LLM-powered Scribe Agent for idempotent business descriptions and PII tagging. The resulting schema, lineage, and PII metadata is accessible via REST APIs and native MCP",
     files: [
+      { src: "https://res.cloudinary.com/midcloud/image/upload/v1787919335/metagraph_jnyuqy.png", type: "image" },
       { src: "https://www.loom.com/embed/40be560d55b249ee9c8d15680db677eb", type: "video" },
       { src: "https://www.loom.com/embed/7cac8fbb58d340d49cf36fbcba50db02", type: "video" }
     ],
@@ -54,6 +77,7 @@ const projects: Project[] = [
     title: "Bubble-Tea",
     description: "AI coding agent harness (TypeScript, Ink TUI) demonstrating harness engineering: multi-provider LLM support, tool registry with MCP integration, plan-act-observe loop, persistent JSONL sessions, sub-agents with background execution, deterministic hook guardrails, and an eval/repair loop.",
     files: [
+      { src: "https://res.cloudinary.com/midcloud/image/upload/v1787919335/bubbletea_fxkpl7.png", type: "image" },
       { src: "https://www.loom.com/embed/0eb88af91a104a16b326ddaa61f4e38f", type: "video" },
     ],
     githubLink: "https://github.com/midsane/bubble-tea",
@@ -71,25 +95,15 @@ const projects: Project[] = [
     liveSiteLink: "https://github.com/midsane/EdgeGuard",
     techStack: ["Redis", "AWS", "Docker", "Javascript"],
   },
-  {
-    id: "8",
-    title: "EventMesh",
-    description: "EventMesh is a backend system that crawls news from the internet, analyzes each article using LLMs + vector embeddings, and automatically builds timelines of related events.",
-    files: [
-      { src: em1, type: "image" },
-    ],
-    githubLink: "https://github.com/midsane/EventMesh",
-    liveSiteLink: "https://github.com/midsane/EventMesh",
-    techStack: ["Typescript", "Pinecone", "GenAI", "Cohere AI", "GraphQL"],
-  },
+
   {
     id: "1",
     title: "Tubespace",
     description:
       "Designed a collaborative video publishing platform that uploads large YouTube videos server-side to overcome poor internet at the creator’s end.",
     files: [
-      { src: tubespace1, type: "image" },
       { src: tubespace2, type: "image" },
+      { src: tubespace1, type: "image" },
     ],
     githubLink: "https://github.com/midsane/tubespace",
     liveSiteLink: "https://tubespace.studio",
@@ -154,7 +168,15 @@ const fadeInUp: Variants = {
   }),
 };
 
+type LightboxTarget = {
+  files: Project["files"];
+  index: number;
+  title: string;
+};
+
 export const SelectedProjects: React.FC = () => {
+  const [lightbox, setLightbox] = useState<LightboxTarget | null>(null);
+
   return (
     <section id="projects" className="w-full px-4 py-20 sm:px-6 sm:py-28">
       <div className="mx-auto max-w-5xl">
@@ -223,6 +245,23 @@ export const SelectedProjects: React.FC = () => {
                               Your browser does not support the video tag.
                             </video>
                           )}
+
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setLightbox({
+                                files: project.files,
+                                index: imgIndex,
+                                title: project.title,
+                              })
+                            }
+                            aria-label={`Open ${project.title} ${
+                              file.type === "video" ? "video" : "image"
+                            } ${imgIndex + 1} full screen`}
+                            className="absolute right-2 top-2 z-10 inline-flex items-center justify-center border border-border/60 bg-background/80 p-1.5 text-muted-foreground opacity-70 backdrop-blur transition-opacity hover:text-foreground hover:opacity-100 focus-visible:opacity-100"
+                          >
+                            <Maximize2 className="h-3.5 w-3.5" />
+                          </button>
                         </div>
                       </CarouselItem>
                     ))}
@@ -287,7 +326,145 @@ export const SelectedProjects: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {lightbox && (
+          <Lightbox
+            files={lightbox.files}
+            initialIndex={lightbox.index}
+            title={lightbox.title}
+            onClose={() => setLightbox(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
+  );
+};
+
+const Lightbox: React.FC<{
+  files: Project["files"];
+  initialIndex: number;
+  title: string;
+  onClose: () => void;
+}> = ({ files, initialIndex, title, onClose }) => {
+  const [index, setIndex] = useState(initialIndex);
+  const count = files.length;
+
+  const go = useCallback(
+    (dir: number) => setIndex((i) => (i + dir + count) % count),
+    [count],
+  );
+
+  // Lock body scroll while open.
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
+  // Keyboard: Escape closes, arrows navigate.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      else if (e.key === "ArrowLeft") go(-1);
+      else if (e.key === "ArrowRight") go(1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [go, onClose]);
+
+  const file = files[index];
+  const isLoom = file.type === "video" && file.src.includes("loom.com");
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 p-4 backdrop-blur-md sm:p-8"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${title} media viewer`}
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close full screen view"
+        className="absolute right-4 top-4 z-10 inline-flex items-center justify-center border border-border/60 bg-background/80 p-2 text-muted-foreground backdrop-blur transition-colors hover:text-foreground"
+      >
+        <X className="h-4 w-4" />
+      </button>
+
+      <div
+        className="relative flex max-h-full w-full max-w-6xl items-center justify-center"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {file.type === "image" ? (
+          <img
+            src={fullResImage(file.src)}
+            alt={`${title} - ${index + 1}`}
+            className="max-h-[85vh] w-auto max-w-full object-contain"
+          />
+        ) : isLoom ? (
+          <div className="aspect-video w-full max-w-5xl">
+            <iframe
+              className="h-full w-full border border-border/60"
+              src={file.src}
+              title={`${title} - ${index + 1}`}
+              allow="fullscreen"
+              allowFullScreen
+            />
+          </div>
+        ) : (
+          <video
+            key={file.src}
+            className="max-h-[85vh] w-auto max-w-full"
+            controls
+            autoPlay
+            loop
+            playsInline
+          >
+            <source src={file.src} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
+      </div>
+
+      {count > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              go(-1);
+            }}
+            aria-label="Previous"
+            className="absolute left-3 top-1/2 z-10 -translate-y-1/2 inline-flex items-center justify-center border border-border/60 bg-background/80 p-2 text-muted-foreground backdrop-blur transition-colors hover:text-foreground sm:left-6"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              go(1);
+            }}
+            aria-label="Next"
+            className="absolute right-3 top-1/2 z-10 -translate-y-1/2 inline-flex items-center justify-center border border-border/60 bg-background/80 p-2 text-muted-foreground backdrop-blur transition-colors hover:text-foreground sm:right-6"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+          <span className="absolute bottom-5 left-1/2 -translate-x-1/2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+            {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
+          </span>
+        </>
+      )}
+    </motion.div>,
+    document.body,
   );
 };
 
@@ -298,8 +475,8 @@ const ProjectImage: React.FC<{
   fetchPriority: "high" | "auto";
 }> = ({ src, alt, loading, fetchPriority }) => (
   <img
-    src={src}
-    srcSet={`/projects/${src.split("/").pop()?.replace(".webp", "-480.webp")} 480w, ${src} 1280w`}
+    src={isCloudinary(src) ? cloudinary(src, 1280) : src}
+    srcSet={imageSrcSet(src)}
     sizes="(min-width: 1024px) 690px, calc(100vw - 32px)"
     alt={alt}
     width={1280}
@@ -307,6 +484,9 @@ const ProjectImage: React.FC<{
     loading={loading}
     fetchPriority={fetchPriority}
     decoding="async"
-    className="w-full h-full object-cover"
+    // object-contain: project screenshots aren't all 16/9, so cropping +
+    // upscaling to fill was the source of the "blurry" look. The container
+    // has bg-muted, so odd ratios letterbox cleanly instead.
+    className="w-full h-full object-contain"
   />
 );
